@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Core_1 = require("./Core");
+var Server_1 = require("./Server");
+var path = require("path");
+var core = new Core_1.Core(__dirname, path.join("..", "configs", "config.json"));
+var server = new Server_1.Server({});
+server.setCore(core);
+server.start();
+// core.projects.loadFromFile();
