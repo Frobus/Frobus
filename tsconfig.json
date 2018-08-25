@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "esnext",
+		"moduleResolution": "node",
+
+        "lib": ["es2015", "es2017", "dom"],
+		"outDir": "./dist/",
+		"watch": true,
+		"sourceMap": true,
+		"jsx": "react",
+		"importHelpers": true,
+		"baseUrl": ".",
+		"paths": {
+			"@system": ["./source/client/scripts/system/index"],
+			"@system/*": ["./source/client/scripts/system/*"],
+			"@utils": ["./source/client/scripts/utils/index"],
+			"@utils/*": ["./source/client/scripts/utils/*"],
+			"@components": ["./source/client/scripts/components/index"],
+			"@components/*": ["./source/client/scripts/components/*"],
+			"@models": ["./source/client/scripts/models/index"],
+			"@models/*": ["./source/client/scripts/models/*"],
+		}
+	}
+}

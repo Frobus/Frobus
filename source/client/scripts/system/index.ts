@@ -1,0 +1,13 @@
+export {default as app} from "./app";
+export {default as config} from "./config";
+export {default as currentLang} from "./currentLang";
+export {default as getAppName} from "./getAppName";
+export {default as getAppPath} from "./getAppPath";
+export {default as getAppVersion} from "./getAppVersion";
+export {default as history} from "./history";
+export {default as lang} from "./lang";
+export {default as onClickExternal} from "./onClickExternal";
+export {default as package} from "./package";
+export {default as render} from "./render";
+export {default as text} from "./text";
+export {default as textDictionary} from "./textDictionary";
