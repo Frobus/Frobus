@@ -1,9 +1,9 @@
 import * as React 		from "react";
-import {Route} 			from "@components/Router";
+import Route 			from "@components/Router/Route";
 
 import ProjectSettings 	from "@components/ProjectSettings";
 
-export function RouteContent(){
+export default function RouteContent(){
 	return (
 		<React.Fragment>
 			<Route<{projectKey: string}> url="/projects/:projectKey/">{

@@ -3,7 +3,7 @@ import {Menu as AntMenu, Icon } from 'antd';
 import {Location as ILocation} from "history";
 
 import appNavigation from "@models/appNavigation";
-import {GetRouter} from "@components/Router";
+import GetRouter from "@components/Router/GetRouter";
 
 export interface onSelectEvent {
 

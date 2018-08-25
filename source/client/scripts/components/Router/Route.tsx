@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as UrlPattern from "url-pattern";
 
-import {Location} from "./";
+import Location from "./Location";
 
-export class Route<IMatched = any> extends React.PureComponent<{
+export default class Route<IMatched = any> extends React.PureComponent<{
 	url: string,
 	children: (router: IMatched) => React.ReactNode,
 }> {

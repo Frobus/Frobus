@@ -18,12 +18,11 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev-0": "start tsc && start stylus ./source/client/styles/index.styl --out ./dist/client/css/ --watch && start electron index.js",
 		"client-dev": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"server\" NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config webpack.config.ts",
 		"client-build": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"build\" NODE_ENV=\"development\" webpack --config webpack.config.ts",
 		"core-dev": "tsc --project ./tsconfig.core.json",
-		"electron": "electron ./",
-		"dev": "start npm run core-dev && start npm run client-dev && start npm run electron"
+		"electron-dev": "electron ./",
+		"dev": "start npm run core-dev && start npm run client-dev && start npm run electron-dev"
 	},
 	"repository": {
 		"type": "git",

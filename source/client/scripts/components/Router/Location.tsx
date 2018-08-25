@@ -1,9 +1,10 @@
 import * as React from "react";
-import {GetRouter, ILocationProps} from "./index";
 import {Location} from "history";
 
+import ILocationProps from "./ILocationProps";
+import GetRouter from "./GetRouter";
 
-export function Location(props: ILocationProps) {
+export default function Location(props: ILocationProps) {
 	return (
 		<GetRouter>{
 			(router) => {

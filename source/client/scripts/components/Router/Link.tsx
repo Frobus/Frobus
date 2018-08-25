@@ -1,8 +1,10 @@
 import * as React from "react";
 
-import {GetRouter, ILinkProps, Router} from "./";
+import GetRouter from "./GetRouter";
+import ILinkProps from "./ILinkProps";
+import Router from "./Router";
 
-export class Link extends React.PureComponent<ILinkProps> {
+export default class Link extends React.PureComponent<ILinkProps> {
 	onClick(router: Router, event: React.MouseEvent<HTMLAnchorElement>){
 		event.preventDefault();
 		router.go( event.currentTarget.getAttribute('href') );

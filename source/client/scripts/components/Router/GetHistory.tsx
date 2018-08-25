@@ -1,7 +1,9 @@
 import * as React from "react";
-import {RouterContext, IGetHistoryProps} from "./index";
 
-export function GetHistory(props: IGetHistoryProps){
+import RouterContext from "./RouterContext";
+import IGetHistoryProps from "./IGetHistoryProps";
+
+export default function GetHistory(props: IGetHistoryProps){
 	return (
 		<RouterContext.Consumer>{
 			(router) => props.children( router.instance.history )

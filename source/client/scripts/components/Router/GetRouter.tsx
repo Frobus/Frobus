@@ -1,7 +1,8 @@
 import * as React from "react";
-import {RouterContext, IGetRouterProps} from "./index";
+import IGetRouterProps from "./IGetRouterProps";
+import RouterContext from "./RouterContext";
 
-export function GetRouter(props: IGetRouterProps){
+export default function GetRouter(props: IGetRouterProps){
 	return (
 		<RouterContext.Consumer>{
 			(router) => props.children( router.instance )

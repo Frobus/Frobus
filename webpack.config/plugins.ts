@@ -5,42 +5,39 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const clearDocs = (MODE !== 'server');
+const clearDocs = (MODE == 'build');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-export default [
+let plugins = [
+	(
+		clearDocs
+		? new CleanWebpackPlugin([ dist('client') ], {root: dist()})
+		: false
+	),
 	new CopyWebpackPlugin([
 		{
 			from: client('fonts'),
-			to: 'fonts',
+			to: '../fonts',
 		},
 		{
 			from: client('libs'),
-			to: 'libs',
+			to: '../libs',
 		}
-	], {
-
-	}),
+	], {}),
 	new CheckerPlugin(),
-	// (clearDocs && new CleanWebpackPlugin(
-	// 	[dist('!(CNAME)')],
-	// 	{
-	// 		root: root(),
-	// 	}
-	// )),
 	// Generates an `index.html` file with the <script> injected.
 	new HtmlWebpackPlugin({
 		// inject: false,
 		template: client( 'index.pug'),
-		excludeChunks: [ 'scripts/content' ],
-		filename: "index.html",
+		excludeChunks: [ 'content' ],
+		filename: "../index.html",
 	}),
 	new HtmlWebpackPlugin({
 		// inject: false,
 		template: client( 'index.pug'),
-		excludeChunks: [ 'scripts/browser' ],
-		filename: "content.html"
+		excludeChunks: [ 'browser' ],
+		filename: "../content.html"
 	}),
 	// This is necessary to emit hot updates (currently CSS only):
 	// new webpack.HotModuleReplacementPlugin(),
@@ -55,4 +52,8 @@ export default [
 	// You can remove this if you don't use Moment.js:
 	new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 	new webpack.HotModuleReplacementPlugin(),
-].filter(Boolean);
+];
+
+
+
+export default plugins.filter(Boolean);

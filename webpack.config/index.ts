@@ -1,5 +1,4 @@
-import {root, source, dist, client} from "./_utils";
-import {snapSvgPath} from "./_config";
+import {source, dist, client} from "./_utils";
 
 import module from "./module";
 import _plugins from "./plugins";
@@ -11,12 +10,12 @@ const config = {
 	target: "electron-renderer",
 	mode: 'development',
 	entry: {
-		'scripts/content': source("client/scripts/content.tsx"),
-		'scripts/browser': source("client/scripts/browser.tsx"),
+		'content': source("client/scripts/content.tsx"),
+		'browser': source("client/scripts/browser.tsx"),
 	},
 	output: {
 		filename: "[name].js",
-		path: dist('client'),
+		path: dist('client/scripts'),
 		publicPath: "/",
 
 		chunkFilename: '[name].js',
@@ -27,7 +26,7 @@ const config = {
 	devtool: "source-map",
 
 	resolve: {
-		extensions: [".ts", ".tsx", ".js", ".json", "png", "jpg", "gif", "svg"],
+		extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".png", ".jpg", ".gif", ".svg"],
 		alias: {
 			'@components': client('scripts', 'components'),
 			'@system': client('scripts', 'system'),
@@ -54,20 +53,6 @@ const config = {
 		watchContentBase: true,
 		hot: true,
 	},
-
-	// externals: [
-	// 	(function () {
-	// 		var IGNORES = [
-	// 			'electron'
-	// 		];
-	// 		return function (context, request, callback) {
-	// 			if (IGNORES.indexOf(request) >= 0) {
-	// 				return callback(null, "require('" + request + "')");
-	// 			}
-	// 			return callback();
-	// 		};
-	// 	})()
-	// ]
 }
 
 export default config;

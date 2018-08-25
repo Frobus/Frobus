@@ -1,8 +1,10 @@
 import * as React from "react";
-import {RouterContext, IRouterProps} from "./index";
+import IRouterProps from "./IRouterProps";
+import RouterContext from "./RouterContext";
+
 import {History, UnregisterCallback, createHashHistory, LocationDescriptorObject} from "history";
 
-export class Router extends React.PureComponent<IRouterProps> {
+export default class Router extends React.PureComponent<IRouterProps> {
 	history: History = this.props.history || createHashHistory({
 		hashType: "hashbang"
 	});

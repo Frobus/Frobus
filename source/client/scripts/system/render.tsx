@@ -2,11 +2,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { hot } from 'react-hot-loader';
 
-import Layout from "@components/Layout";
+import Layout from "@components/Layout/Layout";
 
 import "./styles.styl";
 
-import {Router} from "@components/Router";
+import Router from "@components/Router/Router";
 
 import history from "./history";
 

@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-import {root, dist} from "./_utils";
+import {root} from "./_utils";
 
 export let ENV = process.env.NODE_ENV || 'development';
 export let MODE = process.env.RUN_MODE || 'server';
