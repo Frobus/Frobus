@@ -4,6 +4,7 @@ import RouterContext from "./RouterContext";
 
 import {History, UnregisterCallback, createHashHistory, LocationDescriptorObject} from "history";
 
+
 export default class Router extends React.PureComponent<IRouterProps> {
 	history: History = this.props.history || createHashHistory({
 		hashType: "hashbang"

@@ -65,3 +65,7 @@ core/configs/
 test
 
 config
+
+packager
+
+dist

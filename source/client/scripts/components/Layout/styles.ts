@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-
-export default function({Aside, Section, Logo, ContentScroll, SectionHeader, Footer, ...elements}): any{
+export default function _styled({Aside, Section, Logo, ContentScroll, SectionHeader, Footer, Content, ContentInner, ...elements}): any{
 	return {
 		Logo: styled(Logo)`
 			color: #fff;
@@ -46,6 +45,13 @@ export default function({Aside, Section, Logo, ContentScroll, SectionHeader, Foo
 				text-align: right;
 				padding-right: 0;
 			}
+		`,
+		Content: styled(Content)`
+			padding: 24px;
+		`,
+		ContentInner: styled(ContentInner)`
+			background: #fff;
+			padding: 24px;
 		`,
 		...elements
 	}

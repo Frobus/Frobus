@@ -1,15 +1,27 @@
 import {root, source, client, dist} from "./_utils";
-import {snapSvgPath} from "./_config";
+import {snapSvgPath, MODE} from "./_config";
 
 const pugIncludeGlob = require('pug-include-glob');
 
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+let preprocessorOptions:any = {
+	MODE: MODE,
+	DEV: MODE == 'dev',
+	BUILD: MODE == 'build',
+}
+
+preprocessorOptions = Object.keys(preprocessorOptions).reduce((result, key) => {
+	result.push( key + "=" + preprocessorOptions[key] );
+	return result;
+}, []).join('&');
+
+const preprocessor = `preprocess-loader?` + preprocessorOptions;
 
 export default {
 	rules: [
 		{
-			test: /\.tsx?$/,
+			test: /\.(t|j)sx?$/,
 			exclude: /(node_modules|bower_components)/,
 			use: [
 				{
@@ -22,7 +34,8 @@ export default {
 						// },
 						// babelCore: "@babel/core"
 					}
-				}
+				},
+				preprocessor
 			],
 		},
 		{
@@ -37,6 +50,7 @@ export default {
 							import: client('styles', 'helpers', '*.styl')
 						},
 					},
+					preprocessor
 				]
 
 		},
@@ -44,12 +58,9 @@ export default {
 			test: /\.css$/,
 
 				use: [
-					{
-						loader: 'style-loader',
-					},
-					{
-						loader: 'css-loader',
-					},
+					'style-loader',
+					'css-loader',
+					preprocessor
 				],
 
 		},

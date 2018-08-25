@@ -1,7 +1,12 @@
-const isDev = true;
+let isDev = false;
+/* #if DEV */
+isDev = true;
+/* #endif */
 
 import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
+/* #if DEV */
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+/* #endif */
 
 import * as path from "path";
 
@@ -9,9 +14,9 @@ import Config from "../config";
 const config = Config(app);
 
 const _path = function(...args){ return path.normalize(path.join(...args)); }
-const fromRoot = function(...args){ return _path( __dirname, "..", ...args ); }
-const fromDist = function(...args){ return _path(__dirname, "..", ...args); }
-const fromClient = function(...args){ return fromDist("client", ...args); }
+// const fromRoot = function(...args){ return _path( __dirname, "..", ...args ); }
+// const fromDist = function(...args){ return _path(__dirname, "..", ...args); }
+// const fromClient = function(...args){ return fromDist("client", ...args); }
 
 let mainWindow: BrowserWindow;
 
@@ -50,11 +55,13 @@ function createWindow() {
 	}
 
 	// and load the index.html of the app.
-	if( isDev ){
+	/* #if DEV */
 		mainWindow.loadURL('http://localhost:8080/');
-	} else {
-		mainWindow.loadFile( fromClient('index.html') );
-	}
+	/* #endif */
+
+	/* #if !DEV */
+		mainWindow.loadFile(_path(app.getAppPath(), 'dist', 'client', 'index.html'));
+	/* #endif */
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', function() {
@@ -107,8 +114,8 @@ function createWindow() {
 
 	mainWindow.setMenu(null);
 
-	if( isDev ){
-		// mainWindow.webContents.openDevTools();
+	/* #if DEV */
+		mainWindow.webContents.openDevTools();
 
 		installExtension(REACT_DEVELOPER_TOOLS).then((name) => {
 			console.log(`Added Extension:  ${name}`);
@@ -116,7 +123,11 @@ function createWindow() {
 		.catch((err) => {
 			console.log('An error occurred: ', err)
 		});
-	}
+	/* #endif */
+
+	/* #if !DEV */
+		// mainWindow.webContents.openDevTools();
+	/* #endif */
 
 	mainWindow.show();
 }
@@ -144,16 +155,19 @@ app.on('activate', function() {
 });
 
 app.on('web-contents-created', function(event, webContents){
-	// console.log('web-contents-created')
-	// webContents.hostWebContents
+	
+	/* #if DEV */
 	console.log(webContents.id, webContents.getURL());
+	/* #endif */
+
 	webContents.on('will-navigate', (event) => {
 		// console.log('will-navigate');
 		event.preventDefault();
 	})
 	webContents.on('did-navigate', (event) => {
-		// console.log('will-navigate');
+		/* #if DEV */
 		console.log(webContents.id, webContents.getURL());
+		/* #endif */
 	})
 })
 

@@ -3,27 +3,28 @@ import {source, dist, client} from "./_utils";
 import module from "./module";
 import _plugins from "./plugins";
 import optimization from "./optimization";
+import {MODE} from "./_config";
 
 const plugins = [].concat(_plugins);
 
 const config = {
 	target: "electron-renderer",
-	mode: 'development',
+	mode: MODE == 'dev' ? 'development' : 'production',
 	entry: {
-		'content': source("client/scripts/content.tsx"),
-		'browser': source("client/scripts/browser.tsx"),
+		'entry/content': source("client/scripts/content.tsx"),
+		'entry/browser': source("client/scripts/browser.tsx"),
 	},
 	output: {
 		filename: "[name].js",
 		path: dist('client/scripts'),
-		publicPath: "/",
+		publicPath: 'scripts/',
 
 		chunkFilename: '[name].js',
 	},
 
 	context: source(),
 
-	devtool: "source-map",
+	devtool: MODE == 'dev' ? "source-map" : 'none',
 
 	resolve: {
 		extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".png", ".jpg", ".gif", ".svg"],

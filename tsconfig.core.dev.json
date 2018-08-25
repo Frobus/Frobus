@@ -1,0 +1,7 @@
+{
+	"extends": "./tsconfig.core",
+	"compilerOptions": {
+		"watch": true,
+		"define": "DEV",
+	}
+}

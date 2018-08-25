@@ -13,16 +13,20 @@
 		"css",
 		"js"
 	],
-	"directories": {
-		"doc": "docs"
-	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"client-dev": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"server\" NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config webpack.config.ts",
+		"client-dev": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"dev\" NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config webpack.config.ts",
 		"client-build": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"build\" NODE_ENV=\"development\" webpack --config webpack.config.ts",
-		"core-dev": "tsc --project ./tsconfig.core.json",
+
+		"core-dev": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"dev\" NODE_ENV=\"development\" webpack --config webpack.config.core.ts",
+		"core-build": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"build\" NODE_ENV=\"development\" webpack --config webpack.config.core.ts",
+
 		"electron-dev": "electron ./",
-		"dev": "start npm run core-dev && start npm run client-dev && start npm run electron-dev"
+
+		"dev": "start npm run core-dev && start npm run client-dev && start npm run electron-dev",
+
+		"electron-packager": "node electron-packager",
+		"package": "npm run core-build && npm run client-build && npm run electron-packager"
 	},
 	"repository": {
 		"type": "git",
@@ -36,7 +40,9 @@
 		"url": "https://github.com/vovencia/Frobus/issues"
 	},
 	"homepage": "https://github.com/vovencia/Frobus#readme",
-	"dependencies": {},
+	"dependencies": {
+		"tslib": "^1.9.3"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.0.0-beta.54",
 		"@babel/preset-env": "^7.0.0-beta.54",
@@ -63,6 +69,7 @@
 		"css-loader": "^1.0.0",
 		"electron": "^2.0.8",
 		"electron-devtools-installer": "^2.2.4",
+		"electron-packager": "^12.1.1",
 		"electron-react-titlebar": "^0.8.1",
 		"electron-store": "^2.0.0",
 		"file-loader": "^2.0.0",
@@ -72,6 +79,7 @@
 		"imports-loader": "^0.8.0",
 		"mini-css-extract-plugin": "^0.4.2",
 		"moment": "^2.22.2",
+		"preprocess-loader": "^0.2.2",
 		"prop-types": "^15.6.2",
 		"pug": "^2.0.3",
 		"pug-include-glob": "^0.3.3",
@@ -91,7 +99,6 @@
 		"svg-inline-loader": "^0.8.0",
 		"ts-node": "^7.0.0",
 		"tsconfig-paths": "^3.5.0",
-		"tslib": "^1.9.3",
 		"typescript": "^3.0.1",
 		"url-pattern": "^1.0.3",
 		"webpack": "^4.12.1",
@@ -99,5 +106,12 @@
 		"webpack-dev-server": "^3.1.5",
 		"webpack-serve": "^2.0.2"
 	},
-	"creationYear": 2018
+	"creationYear": 2018,
+	"files": [
+		"lang.json",
+		"package.json"
+	],
+	"directories": {
+		"dist": "./dist"
+	}
 }

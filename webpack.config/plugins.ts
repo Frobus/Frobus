@@ -5,9 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const clearDocs = (MODE == 'build');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
+const clearDocs = (MODE == 'build');
 
 let plugins = [
 	(
@@ -28,19 +30,17 @@ let plugins = [
 	new CheckerPlugin(),
 	// Generates an `index.html` file with the <script> injected.
 	new HtmlWebpackPlugin({
-		// inject: false,
+		inject: true,
 		template: client( 'index.pug'),
-		excludeChunks: [ 'content' ],
+		excludeChunks: [ 'entry/content' ],
 		filename: "../index.html",
 	}),
 	new HtmlWebpackPlugin({
-		// inject: false,
+		inject: true,
 		template: client( 'index.pug'),
-		excludeChunks: [ 'browser' ],
-		filename: "../content.html"
+		excludeChunks: [ 'entry/browser' ],
+		filename: "../content.html",
 	}),
-	// This is necessary to emit hot updates (currently CSS only):
-	// new webpack.HotModuleReplacementPlugin(),
 	// Watcher doesn't work well if you mistype casing in a path so we use
 	// a plugin that prints an error when you attempt to do this.
 	// See https://github.com/facebookincubator/create-react-app/issues/240
