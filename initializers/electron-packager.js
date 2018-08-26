@@ -1,6 +1,8 @@
 'use strict';
 
 const packager = require('electron-packager');
+const path = require('path');
+
 function _path(...args) { return path.normalize(path.join(...args)); }
 
 const options = {

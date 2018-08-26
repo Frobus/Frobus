@@ -31,8 +31,8 @@
 		"build"					: "npm run client-build     && npm run separator && npm run app-build",
 		"build-dev"				: "npm run client-build-dev && npm run separator && npm run app-build-dev",
 
-		"electron-packager"		: "node ./initializers/electron-packager",
-		"release"				: "npm run build && npm run separator && npm run electron-packager",
+		"package"				: "node ./initializers/electron-packager",
+		"release"				: "npm run build && npm run separator && npm run package",
 
 		"separator"				: "\n\n\n\n\n============================================================================================================\n============================================================================================================\n============================================================================================================\n\n\n\n"
 	},
