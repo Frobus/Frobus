@@ -1,4 +1,4 @@
-import {MODE} from "./_config";
+import {BUILD, PROD, WATCH} from "./_config";
 import {source, dist, root, client} from "./_utils";
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,15 +8,14 @@ const { CheckerPlugin } = require('awesome-typescript-loader')
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
-const clearDocs = (MODE == 'build');
+const HtmlWebpackPluginOptions = {
+	inject: true,
+	template: client( 'index.pug'),
+	minify: PROD
+}
 
 let plugins = [
-	(
-		clearDocs
-		? new CleanWebpackPlugin([ dist('client') ], {root: dist()})
-		: false
-	),
+	( BUILD ? new CleanWebpackPlugin([ dist('client') ], {root: dist()}) : false ),
 	new CopyWebpackPlugin([
 		{
 			from: client('fonts'),
@@ -30,14 +29,12 @@ let plugins = [
 	new CheckerPlugin(),
 	// Generates an `index.html` file with the <script> injected.
 	new HtmlWebpackPlugin({
-		inject: true,
-		template: client( 'index.pug'),
+		...HtmlWebpackPluginOptions,
 		excludeChunks: [ 'entry/content' ],
 		filename: "../index.html",
 	}),
 	new HtmlWebpackPlugin({
-		inject: true,
-		template: client( 'index.pug'),
+		...HtmlWebpackPluginOptions,
 		excludeChunks: [ 'entry/browser' ],
 		filename: "../content.html",
 	}),
@@ -51,7 +48,8 @@ let plugins = [
 	// https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 	// You can remove this if you don't use Moment.js:
 	new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-	new webpack.HotModuleReplacementPlugin(),
+
+	( WATCH ? new webpack.HotModuleReplacementPlugin() : false ),
 ];
 
 

@@ -14,6 +14,7 @@ const _preprocessorOptions:any = {
 	DEV: DEV,
 	BUILD: MODE == 'build',
 	PROD: PROD,
+	WATCH: WATCH,
 }
 
 export const preprocessorOptions =  Object.keys(_preprocessorOptions).reduce((result, key) => {

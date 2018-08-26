@@ -12,7 +12,7 @@ import history from "./history";
 
 let Layout = _Layout;
 
-// @if DEV
+// @if WATCH
 import { hot } from 'react-hot-loader';
 Layout = hot(module)(_Layout);
 // @endif
