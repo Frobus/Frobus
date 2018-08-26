@@ -4,9 +4,8 @@ html(lang="ru")
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		title Document
-		
-		<link rel="stylesheet" href="fonts/Roboto/index.css">
-		<link rel="stylesheet" href="libs/Materialize/materialize.min.css">
+		link(rel="stylesheet" href="fonts/Roboto/index.css")
+
 		style.
 			html,
 			body,
@@ -25,7 +24,6 @@ html(lang="ru")
 			html {
 				background: #555;
 			}
-		style.
 			/* https://codepen.io/RRoberts/pen/pEXWEp */
 			.loader {
 				width: 100px;
@@ -64,15 +62,7 @@ html(lang="ru")
 				}
 			}
 	body
-		script.
-			window.onClickOpenConsole = function(event){
-				event.preventDefault();
-				var electron = require('electron');
-				electron.remote.BrowserWindow.getFocusedWindow().webContents.openDevTools()
-			}
 		#root
 			#root-placeholder
-				a(href="#" onclick="onClickOpenConsole.call(this, event)" style="display: block;")
+				a(href="#" onclick="event.preventDefault();require('electron').remote.BrowserWindow.getFocusedWindow().webContents.openDevTools();" style="display: block;")
 					span(class="loader")
-
-		<script src="libs/Materialize/materialize.min.js"></script>

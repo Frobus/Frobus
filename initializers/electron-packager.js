@@ -1,12 +1,10 @@
 'use strict';
 
 const packager = require('electron-packager');
+function _path(...args) { return path.normalize(path.join(...args)); }
 
 const options = {
-	dir: __dirname,
-	// appId: "com.electron.frobus",
-	// productName: "Frobus",
-
+	dir: _path(__dirname, '..'),
 	appCopyright: "Copyright © 2018 Vovencia",
 	out: "release",
 	overwrite: true,
@@ -17,7 +15,8 @@ const options = {
 		".gitignore",
 		"source",
 		"electron-packager.js",
-		"release"
+		"release",
+		"env_vars.ts"
 	]
 };
 

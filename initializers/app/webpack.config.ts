@@ -3,9 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 import {ENV, MODE, BUILD, DEV, PROD, WATCH, preprocessorOptions} from "../env_vars";
 
-function _path(...args) {
-	return path.normalize(path.join(...args));
-}
+function _path(...args) { return path.normalize(path.join(...args)); }
 
 const ROOT = _path(__dirname, '..', '..');
 
