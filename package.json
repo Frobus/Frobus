@@ -27,7 +27,7 @@
 		"build-dev": "npm run client-build-dev && npm run separator && npm run app-build-dev",
 		"package": "node ./initializers/electron-packager",
 		"release": "npm run clear && npm run separator && npm run build && npm run separator && npm run package",
-		"clear": "node ./initializers/clear",
+		"clear": "npx rimraf ./dist && npx rimraf ./release",
 		"separator": "\n\n\n\n\n============================================================================================================\n============================================================================================================\n============================================================================================================\n\n\n\n",
 		"init": "npm i && npm run separator && npm run build-dev"
 	},
@@ -94,6 +94,7 @@
 		"react-hot-loader": "^4.3.5",
 		"react-router-dom": "^4.3.1",
 		"react-router-redux": "^4.0.8",
+		"rimraf": "^2.6.2",
 		"snapsvg": "^0.5.1",
 		"source-map-loader": "^0.2.3",
 		"style-loader": "^0.22.1",

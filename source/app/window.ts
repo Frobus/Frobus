@@ -31,7 +31,7 @@ function createWindow() {
 		height			: config.get('window.size.height', 768),
 		frame			: false,
 		show			: false,
-		backgroundColor	: "#222",
+		backgroundColor	: "#001529",
 		icon			: isWin ? dist('client', 'icons', 'icon.ico') : dist('client', 'icons', 'icon.png'),
 	}
 	if( config.get('window.position.x') != null && config.get('window.position.y') != null ){
