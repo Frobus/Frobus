@@ -3,7 +3,7 @@
 	"productName": "Frobus",
 	"version": "0.1.0",
 	"description": "Frontend Building System",
-	"main": "dist/core/index.js",
+	"main": "dist/app/index.js",
 	"keywords": [
 		"frobus",
 		"frontend",
@@ -15,18 +15,20 @@
 	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"client-dev": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"dev\" NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config webpack.config.ts",
-		"client-build": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"build\" NODE_ENV=\"development\" webpack --config webpack.config.ts",
 
-		"core-dev": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"dev\" NODE_ENV=\"development\" webpack --config webpack.config.core.ts",
-		"core-build": "cross-env TS_NODE_PROJECT=\"webpack.config/tsconfig.json\" RUN_MODE=\"build\" NODE_ENV=\"development\" webpack --config webpack.config.core.ts",
+		"client-dev"			: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config initializers/client/webpack.config.ts",
+		"client-build-dev"		: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" webpack                              --config initializers/client/webpack.config.ts",
+		"client-build"			: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"development\" webpack                              --config initializers/client/webpack.config.ts",
 
-		"electron-dev": "electron ./",
+		"app-dev"				: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" webpack                              --config initializers/app/webpack.config.ts",
+		"app-build"				: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"development\" webpack                              --config initializers/app/webpack.config.ts",
 
-		"dev": "start npm run core-dev && start npm run client-dev && start npm run electron-dev",
+		"electron-dev"			: "electron ./",
 
-		"electron-packager": "node electron-packager",
-		"package": "npm run core-build && npm run client-build && npm run electron-packager"
+		"dev"					: "npm run client-build-dev && start npm run app-dev && start npm run client-dev && start npm run electron-dev",
+
+		"electron-packager"		: "node ./initializers/electron-packager",
+		"release"				: "npm run app-build && npm run client-build && npm run electron-packager"
 	},
 	"repository": {
 		"type": "git",

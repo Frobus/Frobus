@@ -60,12 +60,10 @@ typings/
 # next.js build output
 .next
 
-core/configs/
-
 test
-
-config
 
 packager
 
 dist
+
+release
