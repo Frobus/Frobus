@@ -1,20 +1,8 @@
 import {root, source, client, dist} from "./_utils";
-import {snapSvgPath, MODE} from "./_config";
+import {MODE, preprocessorOptions} from "./_config";
+import {snapSvgPath} from "./snapSvgPath";
 
 const pugIncludeGlob = require('pug-include-glob');
-
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-let preprocessorOptions:any = {
-	MODE: MODE,
-	DEV: MODE == 'dev',
-	BUILD: MODE == 'build',
-}
-
-preprocessorOptions = Object.keys(preprocessorOptions).reduce((result, key) => {
-	result.push( key + "=" + preprocessorOptions[key] );
-	return result;
-}, []).join('&');
 
 const preprocessor = `preprocess-loader?` + preprocessorOptions;
 
@@ -27,12 +15,7 @@ export default {
 				{
 					loader: "awesome-typescript-loader",
 					options: {
-						configFileName: root('tsconfig.json'),
-						// useBabel: true,
-						// babelOptions: {
-						// 	plugins: ["dynamic-import-webpack"]
-						// },
-						// babelCore: "@babel/core"
+						configFileName: root('initializers', 'tsconfig.json'),
 					}
 				},
 				preprocessor

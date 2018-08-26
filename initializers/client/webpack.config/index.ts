@@ -3,13 +3,13 @@ import {source, dist, client} from "./_utils";
 import module from "./module";
 import _plugins from "./plugins";
 import optimization from "./optimization";
-import {MODE} from "./_config";
+import {PROD} from "./_config";
 
 const plugins = [].concat(_plugins);
 
 const config = {
 	target: "electron-renderer",
-	mode: MODE == 'dev' ? 'development' : 'production',
+	mode: PROD ? 'production' : 'development',
 	entry: {
 		'entry/content': source("client/scripts/content.tsx"),
 		'entry/browser': source("client/scripts/browser.tsx"),
@@ -24,7 +24,7 @@ const config = {
 
 	context: source(),
 
-	devtool: MODE == 'dev' ? "source-map" : 'none',
+	devtool: PROD ? 'none' : "source-map",
 
 	resolve: {
 		extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".png", ".jpg", ".gif", ".svg"],

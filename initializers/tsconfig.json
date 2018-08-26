@@ -1,16 +1,16 @@
 {
 	"compilerOptions": {
 		"target": "es5",
-		"module": "esnext",
+		"module": "commonjs",
 		"moduleResolution": "node",
 
-        "lib": ["es2015", "es2017", "dom"],
+		"lib": ["es2015", "es2017", "dom"],
 		"outDir": "dist",
 		"watch": false,
 		"sourceMap": true,
 		"jsx": "react",
 		"importHelpers": true,
-		"baseUrl": ".",
+		"baseUrl": "..",
 		"paths": {
 			"@system"		: ["source/client/scripts/system/index"],
 			"@system/*"		: ["source/client/scripts/system/*"],

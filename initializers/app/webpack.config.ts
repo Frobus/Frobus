@@ -1,30 +1,21 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const ENV = process.env.NODE_ENV || 'development';
-const MODE = process.env.RUN_MODE || 'dev';
-const DEV = MODE == 'dev';
+import {ENV, MODE, BUILD, DEV, PROD, WATCH, preprocessorOptions} from "../env_vars";
 
-const ROOT = path.resolve(__dirname, '..', '..');
-
-let preprocessorOptions:any = {
-	MODE: MODE,
-	DEV: DEV,
-	BUILD: MODE == 'build',
+function _path(...args) {
+	return path.normalize(path.join(...args));
 }
 
-preprocessorOptions = Object.keys(preprocessorOptions).reduce((result, key) => {
-	result.push( key + "=" + preprocessorOptions[key] );
-	return result;
-}, []).join('&');
+const ROOT = _path(__dirname, '..', '..');
 
 const preprocessor = `preprocess-loader?` + preprocessorOptions;
 
 module.exports = {
 	target: "electron-main",
-	entry: path.resolve(ROOT, 'source', 'app', 'index.ts'),
-	mode: DEV ? 'development' : 'production',
-	watch: (DEV ? true : false),
+	entry: _path(ROOT, 'source', 'app', 'index.ts'),
+	mode: PROD ? 'production' : 'development',
+	watch: WATCH,
 	module: {
 		rules: [
 			{
@@ -33,7 +24,7 @@ module.exports = {
 					{
 						loader: "awesome-typescript-loader",
 						options: {
-							configFileName: path.resolve(ROOT, 'tsconfig.app.json'),
+							configFileName: _path(ROOT, 'initializers', 'tsconfig.json'),
 						}
 					},
 					preprocessor
@@ -47,10 +38,10 @@ module.exports = {
 	},
 	output: {
 		filename: 'index.js',
-		path: path.resolve(ROOT, 'dist', 'app')
+		path: _path(ROOT, 'dist', 'app')
 	},
 	devtool: DEV ? "source-map" : 'none',
 	plugins: [
-		new CleanWebpackPlugin([ path.resolve(ROOT, 'dist', 'app') ], {root: path.resolve(ROOT, 'dist')})
+		new CleanWebpackPlugin([ _path(ROOT, 'dist', 'app') ], {root: _path(ROOT, 'dist')})
 	]
 };

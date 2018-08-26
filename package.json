@@ -16,12 +16,13 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 
-		"client-dev"			: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config initializers/client/webpack.config.ts",
-		"client-build-dev"		: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" webpack                              --config initializers/client/webpack.config.ts",
-		"client-build"			: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"development\" webpack                              --config initializers/client/webpack.config.ts",
+		"client-dev"			: "cross-env TS_NODE_PROJECT=\"initializers/tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" node_modules/.bin/webpack-dev-server --config initializers/client/webpack.config.ts",
+		"client-build-dev"		: "cross-env TS_NODE_PROJECT=\"initializers/tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"development\" webpack                              --config initializers/client/webpack.config.ts",
+		"client-build"			: "cross-env TS_NODE_PROJECT=\"initializers/tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"production\"  webpack                              --config initializers/client/webpack.config.ts",
 
-		"app-dev"				: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" webpack                              --config initializers/app/webpack.config.ts",
-		"app-build"				: "cross-env TS_NODE_PROJECT=\"initializers/ts-node.tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"development\" webpack                              --config initializers/app/webpack.config.ts",
+		"app-dev"				: "cross-env TS_NODE_PROJECT=\"initializers/tsconfig.json\" RUN_MODE=\"dev\"    NODE_ENV=\"development\" webpack                              --config initializers/app/webpack.config.ts",
+		"app-build-dev"			: "cross-env TS_NODE_PROJECT=\"initializers/tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"development\" webpack                              --config initializers/app/webpack.config.ts",
+		"app-build"				: "cross-env TS_NODE_PROJECT=\"initializers/tsconfig.json\" RUN_MODE=\"build\"  NODE_ENV=\"production\"  webpack                              --config initializers/app/webpack.config.ts",
 
 		"electron-dev"			: "electron ./",
 
