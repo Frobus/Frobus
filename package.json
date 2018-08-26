@@ -26,10 +26,13 @@
 
 		"electron-dev"			: "electron ./",
 
-		"dev"					: "npm run client-build-dev && start npm run app-dev && start npm run client-dev && start npm run electron-dev",
+		"dev"					: "start npm run app-dev && start npm run client-dev && npm run client-build-dev && start npm run electron-dev",
+
+		"build"					: "npm run client-build     && start npm run app-build",
+		"build-dev"				: "npm run client-build-dev && start npm run app-build-dev",
 
 		"electron-packager"		: "node ./initializers/electron-packager",
-		"release"				: "npm run app-build && npm run client-build && npm run electron-packager"
+		"release"				: "npm run build && npm run electron-packager"
 	},
 	"repository": {
 		"type": "git",
