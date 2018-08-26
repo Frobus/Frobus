@@ -11,8 +11,10 @@
 			"@models/*"		: ["source/client/scripts/models/*"],
 			"@client"		: ["source/client/index"],
 			"@client/*"		: ["source/client/*"],
-			"@root"			: ["source/index"],
-			"@root/*"		: ["source/*"]
+			"@source"		: ["source/index"],
+			"@source/*"		: ["source/*"],
+			"@root"			: ["./index"],
+			"@root/*"		: ["./*"]
 		}
 	}
 }
