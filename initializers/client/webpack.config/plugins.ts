@@ -24,6 +24,10 @@ let plugins = [
 		{
 			from: client('libs'),
 			to: '../libs',
+		},
+		{
+			from: source('icons'),
+			to: '../icons',
 		}
 	], {}),
 	new CheckerPlugin(),

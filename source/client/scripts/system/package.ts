@@ -1,3 +1,2 @@
-import * as fs from "fs";
-import getAppPath from "./getAppPath";
-export default JSON.parse(fs.readFileSync(getAppPath('package.json'), "UTF-8"));
+import * as _package from "@root/package.json";
+export {_package as default};

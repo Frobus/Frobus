@@ -1,7 +1,7 @@
-import * as electron 	from "electron";
 import * as React 		from "react";
+import openExternalUrl  from "./openExternalUrl";
 
 export default function onClickExternal(event: React.MouseEvent<HTMLAnchorElement>){
 	event.preventDefault();
-	electron.shell.openExternal(event.currentTarget.href);
+	openExternalUrl(event.currentTarget.href);
 }

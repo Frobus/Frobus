@@ -1,4 +1,4 @@
-import {source, dist, client} from "./_utils";
+import {source, dist, client, root} from "./_utils";
 
 import module from "./module";
 import _plugins from "./plugins";
@@ -33,6 +33,8 @@ const config = {
 			'@system': client('scripts', 'system'),
 			'@utils': client('scripts', 'utils'),
 			'@models': client('scripts', 'models'),
+			'@client': client(),
+			'@root': root(),
 		}
 	},
 

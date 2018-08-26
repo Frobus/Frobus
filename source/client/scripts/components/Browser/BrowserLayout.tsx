@@ -2,6 +2,8 @@ import * as React from "react";
 import { TitleBar } from 'electron-react-titlebar';
 import 'electron-react-titlebar/assets/style.css';
 import styled from "styled-components";
+import getIcon from "@system/getIcon";
+import appMenu from "@models/appMenu";
 
 function Browser(props){
 	return <div id="browser" className={ props.className }>{ props.children }</div>
@@ -9,7 +11,7 @@ function Browser(props){
 
 function Titlebar(props){
 	return (
-		<div id="browser__titlebar" className={ props.className }><TitleBar menu={ [] } icon={''} /></div>
+		<div id="browser__titlebar" className={ props.className }><TitleBar menu={ appMenu } icon={getIcon('svg')} /></div>
 	);
 }
 

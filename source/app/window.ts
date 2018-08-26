@@ -1,32 +1,38 @@
 let isDev = false;
-/* #if DEV */
+/* @if DEV */
 isDev = true;
-/* #endif */
+/* @endif */
 
 import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
-/* #if DEV */
+/* @if DEV */
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
-/* #endif */
+/* @endif */
 
 import * as path from "path";
 
 import Config from "../config";
 const config = Config(app);
 
+
 const _path = function(...args){ return path.normalize(path.join(...args)); }
-// const fromRoot = function(...args){ return _path( __dirname, "..", ...args ); }
-// const fromDist = function(...args){ return _path(__dirname, "..", ...args); }
+function getAppPath(...args){
+	return _path(app.getAppPath(), ...args);
+}
+const dist = function(...args){ return _path(getAppPath(), ...args); }
 // const fromClient = function(...args){ return fromDist("client", ...args); }
 
+
 let mainWindow: BrowserWindow;
+const isWin = process.platform === "win32";
 
 function createWindow() {
 	let windowOptions: BrowserWindowConstructorOptions = {
-		width	: config.get('window.size.width', 1024),
-		height	: config.get('window.size.height', 768),
-		frame	: false,
-		show	: false,
-		backgroundColor: "#222",
+		width			: config.get('window.size.width', 1024),
+		height			: config.get('window.size.height', 768),
+		frame			: false,
+		show			: false,
+		backgroundColor	: "#222",
+		icon			: isWin ? dist('client', 'icons', 'icon.ico') : dist('client', 'icons', 'icon.png'),
 	}
 	if( config.get('window.position.x') != null && config.get('window.position.y') != null ){
 		windowOptions = {
@@ -56,13 +62,13 @@ function createWindow() {
 	}
 
 	// and load the index.html of the app.
-	/* #if DEV */
+	/* @if DEV */
 		mainWindow.loadURL('http://localhost:8080/');
-	/* #endif */
+	/* @endif */
 
-	/* #if !DEV */
+	/* @if !DEV */
 		mainWindow.loadFile(_path(app.getAppPath(), 'dist', 'client', 'index.html'));
-	/* #endif */
+	/* @endif */
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', function() {
@@ -115,20 +121,22 @@ function createWindow() {
 
 	mainWindow.setMenu(null);
 
-	/* #if DEV */
+	if( config.get('window.devtools') ){
 		mainWindow.webContents.openDevTools();
+	}
 
+	/* @if DEV */
 		installExtension(REACT_DEVELOPER_TOOLS).then((name) => {
 			console.log(`Added Extension:  ${name}`);
 		})
 		.catch((err) => {
 			console.log('An error occurred: ', err)
 		});
-	/* #endif */
+	/* @endif */
 
-	/* #if !DEV */
+	/* @if !DEV */
 		// mainWindow.webContents.openDevTools();
-	/* #endif */
+	/* @endif */
 
 	mainWindow.show();
 }
@@ -157,18 +165,18 @@ app.on('activate', function() {
 
 app.on('web-contents-created', function(event, webContents){
 	
-	/* #if DEV */
+	/* @if DEV */
 	console.log(webContents.id, webContents.getURL());
-	/* #endif */
+	/* @endif */
 
 	webContents.on('will-navigate', (event) => {
 		// console.log('will-navigate');
 		event.preventDefault();
 	})
 	webContents.on('did-navigate', (event) => {
-		/* #if DEV */
+		/* @if DEV */
 		console.log(webContents.id, webContents.getURL());
-		/* #endif */
+		/* @endif */
 	})
 })
 

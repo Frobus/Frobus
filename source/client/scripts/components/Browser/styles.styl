@@ -7,8 +7,18 @@ body,
 	overflow: hidden;
 }
 webview {
-	flex-grow: 9;
+	flex-grow: 1;
 	&#browser-devtools {
-		flex-grow: 3;
+		flex-grow: 1;
+	}
+}
+
+#browser-devtools-box {
+	height: 200px;
+	flex-grow: 0;
+	display: flex;
+	border-top: 2px solid #ccc;
+	> * {
+		flex-grow: 0;
 	}
 }

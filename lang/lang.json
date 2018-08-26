@@ -3,12 +3,24 @@
 		"QWRkIG5ldyBwcm9qZWN0": "Add new project",
 		"UHJvamVjdHM=": "Projects",
 		"Qm9pbGVycGxhdGVz": "Boilerplates",
-		"QWRkIG5ldyBib2lsZXJwbGF0ZQ==": "Add new boilerplate"
+		"QWRkIG5ldyBib2lsZXJwbGF0ZQ==": "Add new boilerplate",
+		"Vmlldw==": "View",
+		"VG9nZ2xlIERldlRvb2xz": "Toggle DevTools",
+		"SGVscA==": "Help",
+		"TGVhcm4gTW9yZQ==": "Learn More",
+		"VG9nZ2xlIFdpbmRvdyBEZXZUb29scw==": "Toggle Window DevTools",
+		"VG9nZ2xlIENvbnRlbnQgRGV2VG9vbHM=": "Toggle Content DevTools"
 	},
 	"RU": {
 		"QWRkIG5ldyBwcm9qZWN0": "Add new project",
 		"UHJvamVjdHM=": "Projects",
 		"Qm9pbGVycGxhdGVz": "Boilerplates",
-		"QWRkIG5ldyBib2lsZXJwbGF0ZQ==": "Add new boilerplate"
+		"QWRkIG5ldyBib2lsZXJwbGF0ZQ==": "Add new boilerplate",
+		"Vmlldw==": "View",
+		"VG9nZ2xlIERldlRvb2xz": "Toggle DevTools",
+		"SGVscA==": "Help",
+		"TGVhcm4gTW9yZQ==": "Learn More",
+		"VG9nZ2xlIFdpbmRvdyBEZXZUb29scw==": "Toggle Window DevTools",
+		"VG9nZ2xlIENvbnRlbnQgRGV2VG9vbHM=": "Toggle Content DevTools"
 	}
 }
