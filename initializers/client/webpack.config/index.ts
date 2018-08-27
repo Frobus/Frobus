@@ -11,12 +11,12 @@ const config = {
 	target: "electron-renderer",
 	mode: PROD ? 'production' : 'development',
 	entry: {
-		'entry/content': source("client/scripts/content.tsx"),
-		'entry/browser': source("client/scripts/browser.tsx"),
+		'views/app': source("client/views/app.tsx"),
+		'views/content': source("client/views/content.tsx"),
 	},
 	output: {
 		filename: "[name].js",
-		path: dist('client/scripts'),
+		path: dist('client', 'scripts'),
 		publicPath: 'scripts/',
 
 		chunkFilename: '[name].js',
@@ -29,12 +29,16 @@ const config = {
 	resolve: {
 		extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".png", ".jpg", ".gif", ".svg"],
 		alias: {
-			'@components': client('scripts', 'components'),
-			'@system': client('scripts', 'system'),
-			'@utils': client('scripts', 'utils'),
-			'@models': client('scripts', 'models'),
-			'@client': client(),
-			'@root': root(),
+			'@root'			: root(),
+			'@source'		: source(),
+			'@client'		: client(),
+			'@components'	: client('components'),
+			'@models'		: client('models'),
+			'@scenes'		: client('scenes'),
+			'@styles'		: client('styles'),
+			'@system'		: client('system'),
+			'@utils'		: client('utils'),
+			'@views'		: client('views'),
 		}
 	},
 

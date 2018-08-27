@@ -1,0 +1,26 @@
+.ant-input-group,
+form :not(.ant-input-group-wrapper) > .ant-input-group,
+form .ant-input-group-wrapper
+	display flex
+
+[class*="ant-col-"] .ant-form-item-control
+	display flex
+	align-items center
+	min-height 39.9999px
+	width 100%
+	> *
+		flex-grow 1
+
+.ant-input-group
+	& > .ant-btn
+		&:first-child
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		&:last-child
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		&:hover,
+		&:focus,
+		&:active
+			z-index 1
+			border-right-width 1px

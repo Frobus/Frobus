@@ -62,11 +62,11 @@ function createWindow() {
 	}
 
 	// and load the index.html of the app.
-	/* @if DEV */
+	/* @if SERVER */
 		mainWindow.loadURL('http://localhost:8080/');
 	/* @endif */
 
-	/* @if !DEV */
+	/* @if !SERVER */
 		mainWindow.loadFile(_path(app.getAppPath(), 'dist', 'client', 'index.html'));
 	/* @endif */
 
@@ -132,10 +132,6 @@ function createWindow() {
 		.catch((err) => {
 			console.log('An error occurred: ', err)
 		});
-	/* @endif */
-
-	/* @if !DEV */
-		// mainWindow.webContents.openDevTools();
 	/* @endif */
 
 	mainWindow.show();

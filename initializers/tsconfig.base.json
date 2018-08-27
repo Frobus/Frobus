@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"alwaysStrict": true,
+		"paths": {
+			"@root"			: ["./index"],
+			"@root/*"		: ["./*"],
+			"@source"		: ["source/index"],
+			"@source/*"		: ["source/*"],
+
+			"@client"		: ["source/client/index"],
+			"@client/*"		: ["source/client/*"],
+			"@components"	: ["source/client/components/index"],
+			"@components/*"	: ["source/client/components/*"],
+			"@models"		: ["source/client/models/index"],
+			"@models/*"		: ["source/client/models/*"],
+			"@scenes"		: ["source/client/scenes/index"],
+			"@scenes/*"		: ["source/client/scenes/*"],
+			"@styles"		: ["source/client/styles/index"],
+			"@styles/*"		: ["source/client/styles/*"],
+			"@system"		: ["source/client/system/index"],
+			"@system/*"		: ["source/client/system/*"],
+			"@utils"		: ["source/client/utils/index"],
+			"@utils/*"		: ["source/client/utils/*"],
+			"@views"		: ["source/client/views/index"],
+			"@views/*"		: ["source/client/views/*"]
+		}
+	}
+}

@@ -1,4 +1,4 @@
-import {BUILD, PROD, WATCH} from "./_config";
+import {BUILD, PROD, SERVER} from "./_config";
 import {source, dist, root, client} from "./_utils";
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +10,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const HtmlWebpackPluginOptions = {
 	inject: true,
-	template: client( 'index.pug'),
+	template: client('layouts', 'index.pug'),
 	minify: PROD
 }
 
@@ -34,12 +34,12 @@ let plugins = [
 	// Generates an `index.html` file with the <script> injected.
 	new HtmlWebpackPlugin({
 		...HtmlWebpackPluginOptions,
-		excludeChunks: [ 'entry/content' ],
+		excludeChunks: [ 'views/content' ],
 		filename: "../index.html",
 	}),
 	new HtmlWebpackPlugin({
 		...HtmlWebpackPluginOptions,
-		excludeChunks: [ 'entry/browser' ],
+		excludeChunks: [ 'views/app' ],
 		filename: "../content.html",
 	}),
 	// Watcher doesn't work well if you mistype casing in a path so we use
@@ -53,7 +53,7 @@ let plugins = [
 	// You can remove this if you don't use Moment.js:
 	new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
-	( WATCH ? new webpack.HotModuleReplacementPlugin() : false ),
+	( SERVER ? new webpack.HotModuleReplacementPlugin() : false ),
 ];
 
 

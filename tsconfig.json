@@ -1,5 +1,5 @@
 {
-	"extends": "./initializers/tsconfig.paths.json",
+	"extends": "./initializers/tsconfig.base.json",
 	"compilerOptions": {
 		"target": "es5",
 		"module": "esnext",
@@ -11,6 +11,6 @@
 		"sourceMap": true,
 		"jsx": "react",
 		"importHelpers": true,
-		"baseUrl": "."
+		"baseUrl": ".",
 	}
 }

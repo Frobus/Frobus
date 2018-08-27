@@ -6,6 +6,7 @@ export const DEV 		= ENV == 'development';
 export const PROD 		= ENV == 'production';
 
 export const WATCH 		= MODE == 'dev';
+export const SERVER 	= MODE == 'dev';
 
 
 const _preprocessorOptions:any = {
@@ -15,6 +16,7 @@ const _preprocessorOptions:any = {
 	BUILD: MODE == 'build',
 	PROD: PROD,
 	WATCH: WATCH,
+	SERVER: SERVER,
 }
 
 export const preprocessorOptions =  Object.keys(_preprocessorOptions).reduce((result, key) => {

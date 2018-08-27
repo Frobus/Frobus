@@ -1,6 +1,5 @@
-import * as Conf from 'conf';
+import Conf from 'conf';
 import * as dotProp from 'dot-prop';
-
 
 export default function (app){
 	class ConfBuffered {
@@ -25,6 +24,9 @@ export default function (app){
 				this.saveTimeout = undefined;
 				this.conf.store = this.bufferStore;
 			}, 300);
+		}
+		getConf() {
+			return this.conf;
 		}
 	}
 	

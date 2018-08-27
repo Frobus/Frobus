@@ -24,7 +24,8 @@ const options = {
 		"release",
 		"env_vars.ts",
 		"initializers",
-		"frobus.exe.lnk"
+		"frobus.exe.lnk",
+		"lang"
 	],
 	win32metadata: {
 		OriginalFilename: "frobus",
