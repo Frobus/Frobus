@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import IGetRouterProps from "./IGetRouterProps";
 import RouterContext from "./RouterContext";
 

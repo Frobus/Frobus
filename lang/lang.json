@@ -30,7 +30,12 @@
 		"T3BlbiBjb25maWcgZmlsZQ==": "Open config file",
 		"RGVmYXVsdA==": "Default",
 		"RGVmYXVsdCBwcm9qZWN0cyBwYXRo": "Default projects path",
-		"UGxlYXNlIGlucHV0IHByb2plY3RzIHBhdGgh": "Please input projects path!"
+		"UGxlYXNlIGlucHV0IHByb2plY3RzIHBhdGgh": "Please input projects path!",
+		"UGF0aCBub3QgZXhpc3Rz": "Path not exists",
+		"RXJyb3I=": "Error",
+		"Q2F0Y2hlZCBlcnJvcg==": "Catched error",
+		"U2VsZWN0IGZvbGRlcg==": "Select folder",
+		"U2F2ZQ==": "Save"
 	},
 	"RU": {
 		"QWRkIG5ldyBwcm9qZWN0": "Add new project",
@@ -63,6 +68,11 @@
 		"T3BlbiBjb25maWcgZmlsZQ==": "Open config file",
 		"RGVmYXVsdA==": "Default",
 		"RGVmYXVsdCBwcm9qZWN0cyBwYXRo": "Default projects path",
-		"UGxlYXNlIGlucHV0IHByb2plY3RzIHBhdGgh": "Please input projects path!"
+		"UGxlYXNlIGlucHV0IHByb2plY3RzIHBhdGgh": "Please input projects path!",
+		"UGF0aCBub3QgZXhpc3Rz": "Path not exists",
+		"RXJyb3I=": "Error",
+		"Q2F0Y2hlZCBlcnJvcg==": "Catched error",
+		"U2VsZWN0IGZvbGRlcg==": "Select folder",
+		"U2F2ZQ==": "Save"
 	}
 }

@@ -1,16 +1,6 @@
 {
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"moduleResolution": "node",
-
-		"lib": ["es2015", "es2017", "dom"],
-		"outDir": "dist",
-		"watch": false,
-		"sourceMap": true,
-		"jsx": "react",
-		"importHelpers": true,
 		"baseUrl": ".."
 	}
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import UrlPattern from "url-pattern";
+import * as React from "react";
+import * as UrlPattern from "url-pattern";
 
 import Location from "./Location";
 

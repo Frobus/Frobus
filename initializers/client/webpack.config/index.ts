@@ -1,4 +1,5 @@
 import {source, dist, client, root} from "./_utils";
+import resolve 						from "../../webpack.config/resolve";
 
 import module from "./module";
 import _plugins from "./plugins";
@@ -26,30 +27,9 @@ const config = {
 
 	devtool: PROD ? 'none' : "source-map",
 
-	resolve: {
-		extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".png", ".jpg", ".gif", ".svg"],
-		alias: {
-			'@root'			: root(),
-			'@source'		: source(),
-			'@client'		: client(),
-			'@components'	: client('components'),
-			'@models'		: client('models'),
-			'@scenes'		: client('scenes'),
-			'@styles'		: client('styles'),
-			'@system'		: client('system'),
-			'@utils'		: client('utils'),
-			'@views'		: client('views'),
-		}
-	},
+	resolve: resolve,
 
-	node: {
-		// dgram: 'empty',
-		// fs: 'empty',
-		// net: 'empty',
-		// tls: 'empty',
-		// child_process: 'empty',
-		// __dirname : true,
-	},
+	node: {},
 
 	module: module,
 	plugins: plugins,

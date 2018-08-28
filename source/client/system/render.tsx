@@ -1,7 +1,7 @@
-import React 			from "react";
-import ReactDOM 	from "react-dom";
+import * as React 			from "react";
+import * as ReactDOM 	from "react-dom";
 
-import _Layout 			from "@components/Layout/Layout";
+import _Content 			from "@components/Content/Layout";
 
 import Router 			from "@components/Router/Router";
 
@@ -16,21 +16,21 @@ history.listen(location => {
 	config.set('location', location);
 });
 
-let Layout = _Layout;
+let Content = _Content;
 // @if SERVER
 import { hot } from 'react-hot-loader';
-Layout = hot(module)(_Layout);
+Content = hot(module)(_Content);
 // @endif
 
-const RenderLayout = () => {
+const RenderContent = () => {
 	return (
 		<Router history={ history }>
-			<Layout />
+			<Content />
 		</Router >
 	);
 }
 
 
 export default function render(){
-	ReactDOM.render(RenderLayout(), document.querySelector('#root'));
+	ReactDOM.render(RenderContent(), document.querySelector('#root'));
 }

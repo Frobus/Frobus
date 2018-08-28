@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { TitleBar } from 'electron-react-titlebar';
 import styled from "styled-components";
 import getIcon from "@system/getIcon";

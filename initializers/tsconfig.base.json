@@ -1,8 +1,20 @@
 {
 	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": false,
+		"esModuleInterop": false,
 		"alwaysStrict": true,
+		
+		"target": "es5",
+		"module": "commonjs",
+		"moduleResolution": "node",
+
+		"lib": ["es2015", "es2017", "dom"],
+		"outDir": "dist",
+		"watch": false,
+		"sourceMap": true,
+		"jsx": "react",
+		"importHelpers": true,
+
 		"paths": {
 			"@root"			: ["./index"],
 			"@root/*"		: ["./*"],

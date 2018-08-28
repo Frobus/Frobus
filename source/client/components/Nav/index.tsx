@@ -1,4 +1,4 @@
-import React 				from "react";
+import * as React 				from "react";
 import {Menu as AntMenu, Icon } from 'antd';
 import {Location as ILocation} 	from "history";
 import styled 					from "styled-components";

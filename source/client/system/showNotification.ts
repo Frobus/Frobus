@@ -12,7 +12,12 @@ notification.config({
 	top: 24 + (isApp() ? 28 : 0),
 });
 
-export default function showNotification(type: messageTypes = 'info', message: string, description?: string, autoclose = true): closeMethod {
+export default function showNotification(
+	type: messageTypes = 'info',
+	message: string | React.ComponentElement<any, any>,
+	description?: string | React.ComponentElement<any, any>,
+	autoclose = true
+): closeMethod {
 	const key = uniqId();
 	let promiseResolve = () => {};
 	let promise = new Promise((resolve, reject) => {
