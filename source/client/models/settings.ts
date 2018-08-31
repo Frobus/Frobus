@@ -5,14 +5,10 @@ import lang, {
 }							from "@system/lang";
 import isDir 				from "@utils/isDir";
 
-export enum fields {
-	language = 'language',
-	projectsPath = 'projectsPath',
-	boilerplatesPath = 'boilerplatesPath',
-}
+export type fields = ('language' | 'projectsPath' | 'boilerplatesPath');
 
 export interface IField {
-	key			 : string,
+	key			 : fields,
 	title		 : string,
 	values		 : any,
 	value		 : string,
@@ -23,22 +19,22 @@ class Settings {
 	private configKey = 'settings';
 	private fields: IField[] = [
 		{
-			key: fields.language,
+			key: 'language',
 			title: ('Language'),
 			values: Object.keys(lang).map( langKey => { return {value: langKey, text: text(lang[langKey])} } ),
 			value: defaultLang,
 		},
 		{
-			key: fields.projectsPath,
+			key: 'projectsPath',
 			title: ('Projects'),
-			values: String,
+			values: '',
 			validator: this.pathValidator,
 			value: '',
 		},
 		{
-			key: fields.boilerplatesPath,
+			key: 'boilerplatesPath',
 			title: ('Boilerplates'),
-			values: String,
+			values: '',
 			validator: this.pathValidator,
 			value: '',
 		},
@@ -54,7 +50,7 @@ class Settings {
 
 
 	set(settings: any): boolean;
-	set(propKey: any, value: any): boolean;
+	set(propKey: fields, value: any): boolean;
 	set():boolean {
 		let propKey = this.configKey;
 		let value = {};
@@ -86,7 +82,7 @@ class Settings {
 			}
 		});
 	}
-	getFieldValue(fieldKey) {
+	getFieldValue(fieldKey: fields) {
 		let defaultValue = '';
 		this.fields.forEach( field => {
 			if(field.key !== fieldKey) return;
@@ -94,6 +90,9 @@ class Settings {
 			return false;
 		})
 		return this.get(fieldKey, defaultValue);
+	}
+	setFieldValue(fieldKey: fields, value) {
+		this.set(fieldKey, value);
 	}
 }
 

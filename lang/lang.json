@@ -50,7 +50,10 @@
 		"UGxlYXNlIGNob29zZSBsYW5ndWFnZS4=": "Please choose language.",
 		"TW9yZQ==": "More",
 		"ZW4=": "en",
-		"cnU=": "ru"
+		"cnU=": "ru",
+		"UGxlYXNlLCBmaWxsIGxhbmd1YWdl": "Please, fill language",
+		"UGxlYXNlLCBmaWxsIHByb2plY3Rz": "Please, fill projects",
+		"UGxlYXNlLCBmaWxsIGJvaWxlcnBsYXRlcw==": "Please, fill boilerplates"
 	},
 	"RU": {
 		"QWRkIG5ldyBwcm9qZWN0": "Добавить проект",
@@ -103,6 +106,9 @@
 		"UGxlYXNlIGNob29zZSBsYW5ndWFnZS4=": "Пожалуйста выберите язык.",
 		"TW9yZQ==": "Ещё",
 		"ZW4=": "en",
-		"cnU=": "ru"
+		"cnU=": "ru",
+		"UGxlYXNlLCBmaWxsIGxhbmd1YWdl": "Please, fill language",
+		"UGxlYXNlLCBmaWxsIHByb2plY3Rz": "Please, fill projects",
+		"UGxlYXNlLCBmaWxsIGJvaWxlcnBsYXRlcw==": "Please, fill boilerplates"
 	}
 }

@@ -16,23 +16,16 @@ import NarrowContent					from "@components/Layout/NarrowContent";
 import showMessage						from "@system/showMessage";
 
 import errorHandler						from "@system/errorHandler";
-import lang, {
-	getCurrent as getCurrentLang,
-	setCurrent as setCurrentLang
-}										from "@system/lang";
+import lang								from "@system/lang";
 import reload 							from "@system/reload";
-import settings 						from "@system/settings";
+import settings, {
+	IField
+}										from "@models/settings";
 
 const {dialog} 					= remote;
 const {Item: FormItem} 			= Form;
 const {Group: InputGroup}		= Input;
 const {Option} 					= Select;
-
-interface SettingsValues {
-	language: lang,
-	projectsPath: string,
-	boilerplatesPath: string,
-}
 
 class PageSettings extends React.PureComponent<IPageSettingsProps> {
 	state = {
@@ -47,19 +40,16 @@ class PageSettings extends React.PureComponent<IPageSettingsProps> {
 		this.onChange.bind(this)
 	}
 
+	onError(e){}
 
-	setSettings(settings: any): void;
-	setSettings(propKey: any, value: any): void;
-	setSettings(){
+
+	async onSubmit(event){
+		event.preventDefault();
 		if( this.savedTimeout ) clearTimeout(this.savedTimeout);
-		let propKey = '';
-		let value = {};
-		switch(arguments.length){
-			case 1: value = arguments[0]; break;
-			case 2: propKey = arguments[0]; value = arguments[1]; break;
-		}
+		let values = await this.validate();
+		if(!values) return;
 		try {
-			settings.set(propKey, value);
+			settings.set(values);
 			showMessage("success", text("Settings saved!"));
 			this.setState({
 				saving: false,
@@ -78,32 +68,6 @@ class PageSettings extends React.PureComponent<IPageSettingsProps> {
 				saved: false
 			});
 		}
-	}
-	getSettings(): any;
-	getSettings(propKey: string): any;
-	getSettings(propKey: string, defaultValue: any): any;
-	getSettings(){
-		let propKey = '';
-		let defaultValue = {};
-		switch(arguments.length){
-			case 1: propKey = arguments[0]; defaultValue = ''; break;
-			case 2: propKey = arguments[0]; defaultValue = arguments[1]; break;
-		}
-		return settings.get(propKey, defaultValue);
-	}
-	onError(e){}
-
-
-	async onSubmit(event){
-		event.preventDefault();
-		let values = await this.validate() as SettingsValues | undefined;
-		if(!values) return;
-
-		const lang = values.language;
-		setCurrentLang(lang);
-		delete values.language;
-
-		this.setSettings(values);
 	}
 	async onChange(){
 		await this.validate();
@@ -131,60 +95,55 @@ class PageSettings extends React.PureComponent<IPageSettingsProps> {
 		if( _isDir === false ) return callback( text('Path is not directory') );
 		callback( text('Path not exists') );
 	}
-	render (){
+	renderField(field: IField){
 		const { getFieldDecorator } = this.props.form;
+		let fieldRules:any[] = [
+			{
+				required: true,
+				message: text('Please, fill ' + field.title.toLocaleLowerCase()),
+			}
+		];
+
+		if(field.validator != null) fieldRules.push({validator: field.validator});
+
+		let fieldOptions = {
+			initialValue: field.value,
+			rules: fieldRules,
+		}
+
+
+		return (
+			<FormItem key={ field.key } label={text( field.title )}>
+				{ getFieldDecorator(field.key, fieldOptions)( this.renderInput(field) )}
+			</FormItem>
+		)
+	}
+	renderInput({ values, value }){
+		if( Array.isArray(values) ){
+			return (
+				<Select>{
+					values.map(item => (
+						<Option key={item.value} value={item.value}>
+							{ text(item.text) }
+						</Option>
+					))
+				}</Select>
+			)
+		}
+
+		return <Input />;
+	}
+	getFields(){
+		return settings.getFields();
+	}
+	render (){
 		return (
 			<Form
 				onSubmit={ this.onSubmit.bind(this) }
 				onChange={ this.onChange.bind(this) }
 			>
 				<NarrowContent>
-					<FormItem label={text("Language")}>
-						{ getFieldDecorator('language', {
-							initialValue: getCurrentLang(),
-							rules: [{
-								required: true,
-								message: text('Please choose language.'),
-							}],
-						})(
-							<Select>{
-								Object.keys(lang).map( langKey => <Option key={langKey} value={langKey}>{ text(lang[langKey]) }</Option> )
-							}
-							</Select>
-						) }
-					</FormItem>
-					<FormItem label={text("Projects")}>
-						<InputGroup compact>
-							{ getFieldDecorator('projectsPath', {
-								initialValue: this.getSettings('projectsPath', ''),
-								rules: [{
-									required: true,
-									message: text('Please input projects path!'),
-								}, {
-									validator: this.pathValidator,
-								}],
-							})(
-								<Input />
-							) }
-							<Button onClick={ this.openDialogHandler.bind(this, 'projectsPath') } icon="folder" title={ text('Select folder') }></Button>
-						</InputGroup>
-					</FormItem>
-					<FormItem label={text("Boilerplates")}>
-						<InputGroup compact>
-							{ getFieldDecorator('boilerplatesPath', {
-								initialValue: this.getSettings('boilerplatesPath', ''),
-								rules: [{
-									required: true,
-									message: text('Please input boilerplates path!'),
-								}, {
-									validator: this.pathValidator,
-								}],
-							})(
-								<Input />
-							) }
-							<Button onClick={ this.openDialogHandler.bind(this, 'boilerplatesPath') } icon="folder" title={ text('Select folder') }></Button>
-						</InputGroup>
-					</FormItem>
+					{ this.getFields().map( field => this.renderField(field) ) }
 					<FormItem>
 						<InputGroup>
 							{

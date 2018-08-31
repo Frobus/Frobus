@@ -1,16 +1,18 @@
-import * as React 		from "react";
-import Button			from "@components/antd/Button";
-import showMessage 		from "@system/showMessage";
+import * as React 	from "react";
+import ProjectNew 	from "./new";
+import Project 		from "./item";
+
 
 export default class PageProjects extends React.PureComponent<{
-	projectKey: string,
+	id: string,
 }> {
 	render (){
 		return (
-			<React.Fragment>
-				<Button type="primary" onClick={ () => { showMessage("info", "Test") } }>Display normal message</Button>
-				<span>"PageProjects: " + this.props.projectKey</span>
-			</React.Fragment>
+			<React.Fragment>{
+				this.props.id == 'new'
+				? <ProjectNew />
+				: <Project id={this.props.id} />
+			}</React.Fragment>
 		);
 	}
 }
