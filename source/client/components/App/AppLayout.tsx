@@ -1,8 +1,10 @@
-import * as React from "react";
-import { TitleBar } from 'electron-react-titlebar';
-import styled from "styled-components";
-import getIcon from "@system/getIcon";
-import appMenu from "@models/appMenu";
+import * as React 		from "react";
+
+import { TitleBar } 	from 'electron-react-titlebar'; // !Need rewrite (1MB+)
+
+import styled 			from "styled-components";
+import getIcon 			from "@system/getIcon";
+import appMenu 			from "@models/appMenu";
 
 import 'electron-react-titlebar/assets/style.css';
 

@@ -49,6 +49,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.0.0-beta.54",
 		"@babel/preset-env": "^7.0.0-beta.54",
+		"@types/antd": "^1.0.0",
 		"@types/conf": "^1.4.0",
 		"@types/dot-prop": "^4.2.0",
 		"@types/electron": "^1.6.10",

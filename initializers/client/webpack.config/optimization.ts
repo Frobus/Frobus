@@ -1,4 +1,7 @@
 export default {
+	// runtimeChunk: {
+	// 	name: entrypoint => `runtime~${entrypoint.name}`
+	// },
 	runtimeChunk: 'single',
 	// mergeDuplicateChunks: true,
 	// removeEmptyChunks: false,
@@ -7,7 +10,7 @@ export default {
 	// concatenateModules: false,
 	splitChunks: {
 		minSize: 1,
-		minChunks: 1,
+		minChunks: 2,
 		cacheGroups: {
 			vendor: {
 				test: /[\\/]node_modules[\\/]/,
@@ -15,28 +18,33 @@ export default {
 				chunks: 'all'
 			},
 			components: {
-				test: /[\\/]source[\\/]components[\\/]/,
+				test: /[\\/]components[\\/]/,
 				name: 'components',
 				chunks: 'all'
 			},
 			utils: {
-				test: /[\\/]source[\\/]utils[\\/]/,
+				test: /[\\/]utils[\\/]/,
 				name: 'utils',
 				chunks: 'all'
 			},
 			system: {
-				test: /[\\/]source[\\/]system[\\/]/,
+				test: /[\\/]system[\\/]/,
 				name: 'system',
 				chunks: 'all'
 			},
-			mixins: {
-				test: /[\\/]source[\\/]mixins[\\/]/,
+			models: {
+				test: /[\\/]models[\\/]/,
 				name: 'models',
 				chunks: 'all'
 			},
 			interfaces: {
-				test: /[\\/]source[\\/]interfaces[\\/]/,
+				test: /[\\/]interfaces[\\/]/,
 				name: 'interfaces',
+				chunks: 'all'
+			},
+			scenes: {
+				test: /[\\/]interfaces[\\/]/,
+				name: 'scenes',
 				chunks: 'all'
 			},
 		}

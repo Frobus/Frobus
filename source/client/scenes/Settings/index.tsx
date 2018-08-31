@@ -7,46 +7,28 @@ import {
 	Button,
 	Icon
 } 								from 'antd';
-import {FormComponentProps}  	from "antd/es/form";
 import {remote} 				from 'electron';
-import * as fs 						from "fs";
+import * as fs 					from "fs";
 
+import {FormComponentProps}  	from "antd/es/form/index.d";
 import text 					from "@system/text";
 import errorHandler 			from "@system/errorHandler";
 import isDir 					from "@utils/isDir";
 import NarrowContent			from "@components/Layout/NarrowContent";
 
-const {dialog} 				= remote;
-const {Item: FormItem} 		= Form;
-const {Group: InputGroup} 	= Input;
+const {dialog} 					= remote;
+const {Item: FormItem} 			= Form;
+const {Group: InputGroup} 		= Input;
 
-interface IPageSettingsProps extends FormComponentProps {
-	page ?: string,
-}
-
-class DialogOpenButton extends React.Component {
-	render(){
-		return <Button onClick={ this.open }>{ text('Select folder') }</Button>;
-	}
-	open(){
-		const result = dialog.showOpenDialog({properties: ['openDirectory']});
-		console.log('result:', result);
-	}
-}
-
-async function validate() {
-	return new Promise((resolve, eject) => {
-		this.props.form.validate((err, values) => {
-			if( err ){
-				resolve(false);
-			} else {
-				resolve(values);
-			}
-		});
-	});
-}
 
 class PageSettings extends React.PureComponent<IPageSettingsProps> {
+	constructor(props){
+		super(props);
+		this.onSubmit.bind(this)
+		this.onChange.bind(this)
+		this.openDialogProjectPath = this.openDialogProjectPath.bind(this);
+		this.projectPathValidator = this.projectPathValidator.bind(this);
+	}
 	async onSubmit(event){
 		event.preventDefault();
 		const values = await this.validate();
@@ -65,6 +47,18 @@ class PageSettings extends React.PureComponent<IPageSettingsProps> {
 			});
 		}).catch(this.onError.bind(this));
 	}
+	openDialogProjectPath(){
+		this.props.form.setFieldsValue({
+			'project-path': (dialog.showOpenDialog({properties: ['openDirectory']}) || [''])[0]
+		});
+	}
+	projectPathValidator(rule, value, callback){
+		const _isDir = isDir(value);
+		if( !value ) return callback();
+		if( _isDir === true ) return callback();
+		if( _isDir === false ) return callback( text('Path is not directory') );
+		callback( text('Path not exists') );
+	}
 	onError(e){}
 	render (){
 		const { getFieldDecorator } = this.props.form;
@@ -72,30 +66,21 @@ class PageSettings extends React.PureComponent<IPageSettingsProps> {
 			<Form
 				onSubmit={ this.onSubmit.bind(this) }
 				onChange={ this.onChange.bind(this) }
-				className="ant-form__narrow"
 			>
 				<NarrowContent>
-					<FormItem
-						label={text("Default projects path")}
-					>
+					<FormItem label={text("Default projects path")}>
 						<InputGroup compact>
 							{getFieldDecorator('project-path', {
 								rules: [{
 									required: true,
 									message: text('Please input projects path!'),
 								}, {
-									validator: (rule, value, callback) => {
-										const _isDir = isDir(value);
-										if( !value ) return callback();
-										if( _isDir === true ) return callback();
-										if( _isDir === false ) return callback( text('Path is not directory') );
-										callback( text('Path not exists') );
-									},
+									validator: this.projectPathValidator,
 								}],
 							})(
 								<Input />
 							)}
-							<DialogOpenButton />
+							<Button onClick={ this.openDialogProjectPath }>{ text('Select folder') }</Button>
 						</InputGroup>
 					</FormItem>
 					<FormItem>
@@ -107,5 +92,11 @@ class PageSettings extends React.PureComponent<IPageSettingsProps> {
 	}
 }
 
+
+
+
+interface IPageSettingsProps extends FormComponentProps {
+	page ?: string,
+}
 const creator = Form.create();
 export default creator(PageSettings);
