@@ -10,7 +10,7 @@ import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-insta
 
 import * as path from "path";
 
-import Config from "../config";
+import Config from "@source/config";
 const config = Config(app);
 
 
@@ -63,7 +63,7 @@ function createWindow() {
 
 	// and load the index.html of the app.
 	/* @if SERVER */
-		mainWindow.loadURL('http://localhost:50080/');
+		mainWindow.loadURL( '/* @echo DEV_URL */' || 'http://localhost:8080/');
 	/* @endif */
 
 	/* @if !SERVER */

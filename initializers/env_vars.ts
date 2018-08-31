@@ -7,16 +7,19 @@ export const PROD 		= ENV == 'production';
 
 export const WATCH 		= MODE == 'dev';
 export const SERVER 	= MODE == 'dev';
-
+export const DEV_PORT 	= 50080;
+export const DEV_URL	= `http://localhost:${ DEV_PORT }/`;
 
 const _preprocessorOptions:any = {
-	MODE: MODE,
-	ENV: ENV,
-	DEV: DEV,
-	BUILD: MODE == 'build',
-	PROD: PROD,
-	WATCH: WATCH,
-	SERVER: SERVER,
+	MODE,
+	ENV,
+	DEV,
+	BUILD,
+	PROD,
+	WATCH,
+	SERVER,
+	DEV_PORT,
+	DEV_URL,
 }
 
 export const preprocessorOptions =  Object.keys(_preprocessorOptions).reduce((result, key) => {

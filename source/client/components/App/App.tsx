@@ -33,7 +33,7 @@ export default class Browser extends React.PureComponent {
 		devTools: false,
 	}
 	private ready = false;
-	private devTools = config.get('browser.devtool.open', false/* @if DEV */ || true/* @endif */);
+	private devTools = config.get('browser.devtool.open', false);
 	constructor(props){
 		super(props);
 		this.webviewDevtoolsCallback = this.webviewDevtoolsCallback.bind(this);
@@ -42,11 +42,14 @@ export default class Browser extends React.PureComponent {
 		let webviewAttrs = {
 			id: "browser-view",
 			ref: this.webviewRef,
-			src: "//localhost:8080/content.html",
+			src: '',
 		}
 
 		/* @if !SERVER */
 		webviewAttrs['src'] = getDistPath('client', 'content.html');
+		/* @endif */
+		/* @if SERVER */
+		webviewAttrs['src'] = ('/* @echo DEV_URL */' || "//localhost:8080/") + "content.html";
 		/* @endif */
 		webviewAttrs['nodeintegration'] = "";
 		return (
