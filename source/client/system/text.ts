@@ -1,9 +1,13 @@
 import base64 from "@utils/base64";
 import textDictionary from "./textDictionary";
 import lang from "./lang";
-import currentLang from "./currentLang";
+import {getCurrent} from "./lang";
 
-export default function text(value, _lang: lang = lang.EN){
+function _singleText(){
+
+}
+
+export default function text(value){
 	const textKey = base64.encode(value);
 	for(let langKey in lang){
 		let langValue = textDictionary.get(`${ langKey }.${ textKey }`, null);
@@ -12,5 +16,5 @@ export default function text(value, _lang: lang = lang.EN){
 		}
 	}
 
-	return textDictionary.get(`${ currentLang }.${ textKey }`, value);
+	return textDictionary.get(`${ getCurrent() }.${ textKey }`, value);
 }

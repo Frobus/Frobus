@@ -1,5 +1,5 @@
 import * as React from "react";
-import {onClickExternal} from "@system";
+import onClickExternal from "@system/onClickExternal";
 
 export default class ExternalLink extends React.PureComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> {
 	render(){

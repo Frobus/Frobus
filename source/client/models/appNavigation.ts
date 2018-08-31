@@ -1,4 +1,4 @@
-import {text} from "@system";
+import text from "@system/text";
 import icons from "@system/icons"
 
 

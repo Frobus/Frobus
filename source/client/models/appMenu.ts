@@ -7,6 +7,7 @@ import _package 								from "@system/package";
 import openExternalUrl  						from "@system/openExternalUrl";
 import openExternalFile  						from "@system/openExternalFile";
 import text 									from "@system/text";
+import reload 									from "@system/reload";
 
 const template:(PartialMenuItemConstructorOptions & { submenu: PartialMenuItemConstructorOptions[] })[] = [
 	{
@@ -43,8 +44,7 @@ const template:(PartialMenuItemConstructorOptions & { submenu: PartialMenuItemCo
 			{
 				label: text('Reload application'),
 				click(){
-					const applicationInstance = remote.getCurrentWebContents();
-					applicationInstance.reload();
+					reload();
 				}
 			},
 			{
@@ -72,7 +72,7 @@ const template:(PartialMenuItemConstructorOptions & { submenu: PartialMenuItemCo
 		]
 	},
 	{
-		label: text('About'),
+		label: text('More'),
 		submenu: [
 			{
 				label: text('Homepage'),

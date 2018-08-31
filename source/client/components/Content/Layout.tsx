@@ -2,21 +2,22 @@ import * as React 				from "react";
 
 import AntLayout 				from '@components/antd/Layout';
 
-import * as system 				from "@system";
+import _package 				from "@system/package";
+import getAppName				from "@system/getAppName";
+import getAppVersion			from "@system/getAppVersion";
 import Nav 						from "@components/Nav";
 import ExternalLink  			from "@components/ExternalLink";
 import LocationString 			from "@components/LocationString";
 
-import delay from "@utils/delay";
-
 const { Header: AntHeader, Content: AntContent, Footer: AntFooter, Sider: AntSider } = AntLayout;
 
-import RouteContent from "./RouteContent";
+import RouteContent 		from "./RouteContent";
+import RenderHeader 		from "./RenderHeader"
 
 import "antd/dist/antd.css";
 import "./styles.styl";
 
-import styled from "./styles";
+import styles from "./styles";
 
 
 export default class Layout extends React.PureComponent {
@@ -42,15 +43,15 @@ function RenderFooter(){
 	const currentYear = (new Date(Date.now())).getFullYear();
 	let yearLabel = '';
 
-	if(system.package.creationYear == currentYear){
+	if(_package.creationYear == currentYear){
 		yearLabel = currentYear.toString();
 	} else {
-		yearLabel = `${ system.package.creationYear } - ${ currentYear }`;
+		yearLabel = `${ _package.creationYear } - ${ currentYear }`;
 	}
 
-	const url = system.package.homepage;
-	const name = system.getAppName();
-	const version = system.getAppVersion();
+	const url = _package.homepage;
+	const name = getAppName();
+	const version = getAppVersion();
 
 	return (
 		<Footer>
@@ -60,12 +61,8 @@ function RenderFooter(){
 	);
 }
 
-function RenderHeader(){
-	return (<SectionHeader></SectionHeader>);
-}
-
 function RenderLogo(){
-	return (<Logo><span>{ system.getAppName() }</span></Logo>);
+	return (<Logo><span>{ getAppName() }</span></Logo>);
 }
 
 function RenderContent(){
@@ -74,7 +71,6 @@ function RenderContent(){
 			<Content>
 				<ContentInner>
 					{ RouteContent() }
-					{ "1235" }
 				</ContentInner>
 			</Content>
 			<RenderFooter />
@@ -92,10 +88,8 @@ const {
 	ContentScroll,
 	Content,
 	Footer,
-	SectionHeader
-} = styled({
+} = styles({
 	Aside: AntSider,
-	SectionHeader: AntHeader,
 	Section: AntLayout,
 	Logo: "div",
 	ContentInner: "div",
