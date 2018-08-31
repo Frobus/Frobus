@@ -1,6 +1,6 @@
-import * as React from "react";
-import {Button} from "antd";
-import showMessage from "@system/showMessage";
+import * as React 		from "react";
+import Button			from "@components/antd/Button";
+import showMessage 		from "@system/showMessage";
 
 export default class PageProjects extends React.PureComponent<{
 	projectKey: string,

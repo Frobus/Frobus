@@ -1,11 +1,13 @@
 import * as React 				from "react";
-import {Menu as AntMenu, Icon } from 'antd';
 import {Location as ILocation} 	from "history";
 import styled 					from "styled-components";
 
-import appNavigation 	from "@models/appNavigation";
-import GetRouter 		from "@components/Router/GetRouter";
-import config 			from "@system/config";
+import AntMenu 					from '@components/antd/Menu';
+import Icon 					from '@components/antd/Icon';
+
+import appNavigation 			from "@models/appNavigation";
+import GetRouter 				from "@components/Router/GetRouter";
+import config 					from "@system/config";
 
 
 export interface onSelectEvent {

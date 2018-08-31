@@ -1,14 +1,9 @@
-import * as React 					from "react";
-import {
-	Form,
-	Row,
-	Col,
-	Input,
-	Button,
-	Icon
-} 								from 'antd';
+import * as React 				from "react";
 import {remote} 				from 'electron';
-import * as fs 					from "fs";
+
+import Form						from '@components/antd/Form';
+import Input					from '@components/antd/Input';
+import Button					from '@components/antd/Button';
 
 import {FormComponentProps}  	from "antd/es/form/index.d";
 import text 					from "@system/text";

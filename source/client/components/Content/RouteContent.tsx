@@ -1,4 +1,4 @@
-import * as React 			from "react";
+import * as React 		from "react";
 import Route 			from "@components/Router/Route";
 
 import Settings 		from "@scenes/Settings";

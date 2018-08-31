@@ -1,6 +1,6 @@
 import * as React 				from "react";
 
-import { Layout as AntLayout } 	from 'antd';
+import AntLayout 				from '@components/antd/Layout';
 
 import * as system 				from "@system";
 import Nav 						from "@components/Nav";

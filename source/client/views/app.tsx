@@ -3,7 +3,7 @@ window['__viewType'] = 'app';
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import "antd/dist/antd.css";
+import "@components/antd/styles";
 import "@client/styles/app.styl";
 
 import App from "@components/App/App";
