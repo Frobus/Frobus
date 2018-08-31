@@ -63,7 +63,7 @@ function createWindow() {
 
 	// and load the index.html of the app.
 	/* @if SERVER */
-		mainWindow.loadURL('http://localhost:8080/');
+		mainWindow.loadURL('http://localhost:50080/');
 	/* @endif */
 
 	/* @if !SERVER */

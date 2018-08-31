@@ -39,6 +39,7 @@ const config = {
 		contentBase: dist('client'),
 		watchContentBase: true,
 		hot: true,
+		port: 50080,
 	},
 }
 
