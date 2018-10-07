@@ -1,6 +1,5 @@
-import * as React 				from "react";
-import AntLayout 				from '@components/antd/Layout';
-import Menu 					from '@components/antd/Menu';
+import * as React 						from "react";
+import {Layout as AntLayout, Menu}		from 'antd';
 
 import styles from "./styles";
 

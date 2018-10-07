@@ -33,16 +33,16 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/vovencia/Frobus.git"
+		"url": "git+https://github.com/Frobus/Frobus.git"
 	},
 	"author": {
 		"name": "Vladimir M."
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/vovencia/Frobus/issues"
+		"url": "https://github.com/Frobus/Frobus/issues"
 	},
-	"homepage": "https://github.com/vovencia/Frobus#readme",
+	"homepage": "https://github.com/Frobus/Frobus#readme",
 	"dependencies": {
 		"tslib": "^1.9.3"
 	},
@@ -79,7 +79,10 @@
 		"electron-react-titlebar": "^0.8.1",
 		"electron-store": "^2.0.0",
 		"file-loader": "^2.0.0",
+		"frobus-core": "^1.0.0",
+		"frobus-utils": "^1.0.0",
 		"glob": "^7.1.2",
+		"hash.js": "^1.1.5",
 		"history": "^4.7.2",
 		"html-webpack-plugin": "^3.2.0",
 		"imports-loader": "^0.8.0",
@@ -96,8 +99,10 @@
 		"react": "^16.4.2",
 		"react-dom": "^16.4.1",
 		"react-hot-loader": "^4.3.5",
+		"react-redux": "^5.0.7",
 		"react-router-dom": "^4.3.1",
 		"react-router-redux": "^4.0.8",
+		"redux": "^4.0.0",
 		"snapsvg": "^0.5.1",
 		"source-map-loader": "^0.2.3",
 		"style-loader": "^0.22.1",

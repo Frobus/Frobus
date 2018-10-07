@@ -1,4 +1,4 @@
-import message from '@components/antd/Message';
+import {message} from 'antd';
 import isApp from "@system/isApp";
 
 export type messageTypes = ('success' | 'error' | 'info' | 'warning' | 'warn' | 'loading');

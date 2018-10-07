@@ -53,7 +53,20 @@
 		"cnU=": "ru",
 		"UGxlYXNlLCBmaWxsIGxhbmd1YWdl": "Please, fill language",
 		"UGxlYXNlLCBmaWxsIHByb2plY3Rz": "Please, fill projects",
-		"UGxlYXNlLCBmaWxsIGJvaWxlcnBsYXRlcw==": "Please, fill boilerplates"
+		"UGxlYXNlLCBmaWxsIGJvaWxlcnBsYXRlcw==": "Please, fill boilerplates",
+		"Qm9pbGVycGxhdGUgcGF0aA==": "Boilerplate path",
+		"ZGlyZWN0b3J5IG5vdCBleGlzdA==": "directory not exist",
+		"RDpcUHJvamVjdHNcRnJvYnVzXHNvdXJjZVxjbGllbnRcdmlld3NcY29udGVudC50c3ggaXMgbm90IGRpcmVjdG9yeQ==": "D:\\Projects\\Frobus\\source\\client\\views\\content.tsx is not directory",
+		"QWRk": "Add",
+		"QWRkIGJvaWxlcnBsYXRl": "Add boilerplate",
+		"bm90IGV4aXN0": "not exist",
+		"aXMgbm90IGRpcmVjdG9yeQ==": "is not directory",
+		"bm90IGRpcmVjdG9yeQ==": "not directory",
+		"Qm9pbGVycGxhdGUgbmFtZQ==": "Boilerplate name",
+		"": "",
+		"UmVxdWlyZWQgZmllbGQ=": "Required field",
+		"bm90IGZpbGU=": "not file",
+		"Qm9pbGVycGxhdGUgYWRkZWQh": "Boilerplate added!"
 	},
 	"RU": {
 		"QWRkIG5ldyBwcm9qZWN0": "Добавить проект",
@@ -109,6 +122,19 @@
 		"cnU=": "ru",
 		"UGxlYXNlLCBmaWxsIGxhbmd1YWdl": "Please, fill language",
 		"UGxlYXNlLCBmaWxsIHByb2plY3Rz": "Please, fill projects",
-		"UGxlYXNlLCBmaWxsIGJvaWxlcnBsYXRlcw==": "Please, fill boilerplates"
+		"UGxlYXNlLCBmaWxsIGJvaWxlcnBsYXRlcw==": "Please, fill boilerplates",
+		"Qm9pbGVycGxhdGUgcGF0aA==": "Boilerplate path",
+		"ZGlyZWN0b3J5IG5vdCBleGlzdA==": "directory not exist",
+		"RDpcUHJvamVjdHNcRnJvYnVzXHNvdXJjZVxjbGllbnRcdmlld3NcY29udGVudC50c3ggaXMgbm90IGRpcmVjdG9yeQ==": "D:\\Projects\\Frobus\\source\\client\\views\\content.tsx is not directory",
+		"QWRk": "Add",
+		"QWRkIGJvaWxlcnBsYXRl": "Add boilerplate",
+		"bm90IGV4aXN0": "not exist",
+		"aXMgbm90IGRpcmVjdG9yeQ==": "is not directory",
+		"bm90IGRpcmVjdG9yeQ==": "not directory",
+		"Qm9pbGVycGxhdGUgbmFtZQ==": "Boilerplate name",
+		"": "",
+		"UmVxdWlyZWQgZmllbGQ=": "Required field",
+		"bm90IGZpbGU=": "not file",
+		"Qm9pbGVycGxhdGUgYWRkZWQh": "Boilerplate added!"
 	}
 }

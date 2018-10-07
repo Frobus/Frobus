@@ -1,12 +1,17 @@
 import * as React 			from "react";
-import * as ReactDOM 	from "react-dom";
+import * as ReactDOM 		from "react-dom";
 
 import _Content 			from "@components/Content/Layout";
 
-import Router 			from "@components/Router/Router";
+import Router 				from "@components/Router/Router";
 
-import history 			from "./history";
-import config 			from "@system/config";
+import history 				from "./history";
+import config 				from "@system/config";
+import {
+	Provider as AppStoreProvider,
+	store as AppStore
+}							from "@system/AppStore";
+import {ConnectModels}		from "@models"
 
 
 const initLocation = history.createHref(config.get('location', {}));
@@ -17,6 +22,7 @@ history.listen(location => {
 });
 
 let Content = _Content;
+
 // @if SERVER
 import { hot } from 'react-hot-loader';
 Content = hot(module)(_Content);
@@ -24,9 +30,12 @@ Content = hot(module)(_Content);
 
 const RenderContent = () => {
 	return (
-		<Router history={ history }>
-			<Content />
-		</Router >
+		<AppStoreProvider store={AppStore}>
+			<Router history={ history }>
+				<ConnectModels />
+				<Content />
+			</Router >
+		</AppStoreProvider>
 	);
 }
 

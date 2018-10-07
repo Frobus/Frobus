@@ -2,19 +2,29 @@ import * as React 				from "react";
 import {Location as ILocation} 	from "history";
 import styled 					from "styled-components";
 
-import AntMenu 					from '@components/antd/Menu';
-import Icon 					from '@components/antd/Icon';
+import {Menu as AntMenu, Icon} 	from 'antd';
 
 import appNavigation 			from "@models/appNavigation";
 import GetRouter 				from "@components/Router/GetRouter";
 import config 					from "@system/config";
+import {
+	IList as boilerplatesList
+}								from "@models/boilerplates";
+import createNavigation 		from "@utils/createNavigation";
 
+interface INavItem {
+	caption		 : string;
+	key			 : string;
+	icon		?: string;
+	children	?: INavList;
+}
+type INavList = INavItem[];
 
-export interface onSelectEvent {
-
+interface INavProps {
+	nav: INavList;
 }
 
-export default class Nav extends React.PureComponent {
+export default class Nav extends React.PureComponent<INavProps> {
 	onSelectHandler(router, event){
 		const url = appNavigation.getItemUrl(event.key);
 		router.go(url);
@@ -22,8 +32,8 @@ export default class Nav extends React.PureComponent {
 	getSelectedFromLocation(location: ILocation){
 		return location.pathname.split('/').filter(Boolean);
 	}
-	renderNav(list: any[]){
-		const renderItem = (item) => {
+	renderNav(list: INavList){
+		const renderItem = (item: INavItem) => {
 			return (
 				<AntMenu.Item key={ item.key } >
 					<Icon type={ item.icon } />
@@ -31,7 +41,7 @@ export default class Nav extends React.PureComponent {
 				</AntMenu.Item>
 			);
 		}
-		const renderSubmenu = (item) => {
+		const renderSubmenu = (item: INavItem) => {
 			const title = <span><Icon type={ item.icon } /><span>{ item.caption }</span></span>;
 			return (
 				<AntMenu.SubMenu key={ item.key } title={ title }>
@@ -46,8 +56,23 @@ export default class Nav extends React.PureComponent {
 		return list.map(render);
 	}
 	render(){
-		const navigation = appNavigation.getNavigation();
+		// let navigationList = appNavigation.getItems();
+		
+		// navigationList = navigationList.concat(this.props.boilerplates.map(item => ({
+		// 	key: item.key,
+		// 	icon: "file",
+		// 	data: { id: item.key },
+		// 	caption: item.name,
+		// 	parent: "boilerplates",
+		// })));
+
+		// const navigation = createNavigation(navigationList);
+
+		const navigation = this.props.nav;
 		const defaultOpenKeys = config.get('nav.openKeys', navigation.map( item => item.key ));
+
+
+
 		return (
 			<GetRouter>{ (router) => {
 				const selectedKeys = this.getSelectedFromLocation( router.getLocation() );
@@ -76,6 +101,13 @@ export default class Nav extends React.PureComponent {
 		config.set('nav.openKeys', openKeys);
 	}
 }
+
+// let ConnectedNav = boilerplatesConnect<IConnectedBoilerplates>(function mapStateToProps(state){
+// 	return {
+// 		boilerplates: state.list,
+// 	}
+// })(Nav);
+// export default ConnectedNav;
 
 const NavStyled = styled("div")`
 	.ant-menu-dark.ant-menu-inline .ant-menu-submenu-title,

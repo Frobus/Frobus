@@ -25,4 +25,6 @@ export default function errorHandler(error: Error | string){
 	})
 
 	showNotification("error", text_errorTitle, errorDetails);
+
+	console.error("System Error:", message);
 }

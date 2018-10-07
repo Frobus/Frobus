@@ -1,18 +1,19 @@
 import * as React 						from "react";
 import {remote} 						from 'electron';
 
-import Form								from '@components/antd/Form';
-import Input, {
-	Delimiter as InputGroupDelimiter
-}										from '@components/antd/Input';
-import Button							from '@components/antd/Button';
-import Icon								from '@components/antd/Icon';
-import Select							from '@components/antd/Select';
+import {
+	Form,
+	Input,
+	Button,
+	Select,
+	Icon
+}										from 'antd';
 
 import {FormComponentProps}  			from "antd/es/form/index.d";
 import text 							from "@system/text";
 import isDir 							from "@utils/isDir";
 import NarrowContent					from "@components/Layout/NarrowContent";
+import InputGroupDelimiter				from "@components/InputGroupDelimiter";
 import showMessage						from "@system/showMessage";
 
 import errorHandler						from "@system/errorHandler";

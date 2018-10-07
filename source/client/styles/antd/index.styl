@@ -28,6 +28,15 @@ form .ant-input-group-wrapper
 			z-index 1
 			border-right-width 1px
 
+.ant-input-group
+	> .ant-form-item
+		display flex
+		align-items flex-start
+		margin 0
+		flex-grow 1
+		> *
+			flex-grow 1
+
 .ant-input-group-delimiter
 	display inline-block
 	vertical-align middle
@@ -35,3 +44,7 @@ form .ant-input-group-wrapper
 	height 8px
 	flex-grow 0
 	flex-shrink 0
+
+.ant-form-item
+	&:last-child:first-child
+		margin-bottom 0

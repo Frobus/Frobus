@@ -1,4 +1,4 @@
-import notification from '@components/antd/Notification';
+import {notification} from 'antd';
 import uniqId from "@utils/uniqId";
 import isApp from "@system/isApp";
 

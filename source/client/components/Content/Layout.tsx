@@ -1,23 +1,24 @@
 import * as React 				from "react";
 
-import AntLayout 				from '@components/antd/Layout';
+import {Layout as AntLayout} 	from 'antd';
 
 import _package 				from "@system/package";
 import getAppName				from "@system/getAppName";
 import getAppVersion			from "@system/getAppVersion";
-import Nav 						from "@components/Nav";
 import ExternalLink  			from "@components/ExternalLink";
 import LocationString 			from "@components/LocationString";
 
 const { Header: AntHeader, Content: AntContent, Footer: AntFooter, Sider: AntSider } = AntLayout;
 
 import RouteContent 		from "./RouteContent";
-import RenderHeader 		from "./RenderHeader"
+import RenderHeader 		from "./RenderHeader";
+import Nav 					from "./Nav"
 
 import "antd/dist/antd.css";
 import "./styles.styl";
 
 import styles from "./styles";
+
 
 
 export default class Layout extends React.PureComponent {

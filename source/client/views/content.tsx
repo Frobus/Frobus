@@ -1,7 +1,7 @@
 window['__viewType'] = 'content';
 
 
-import "@components/antd/styles";
+import "antd/dist/antd.css";
 import "@client/styles/content.styl";
 
 import render from "@system/render";
