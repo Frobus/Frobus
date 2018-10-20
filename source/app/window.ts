@@ -5,7 +5,7 @@ isDev = true;
 
 import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 /* @if DEV */
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS  } from 'electron-devtools-installer';
 /* @endif */
 
 import * as path from "path";
@@ -126,7 +126,7 @@ function createWindow() {
 	}
 
 	/* @if DEV */
-		installExtension(REACT_DEVELOPER_TOOLS).then((name) => {
+		installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS ]).then((name) => {
 			console.log(`Added Extension:  ${name}`);
 		})
 		.catch((err) => {

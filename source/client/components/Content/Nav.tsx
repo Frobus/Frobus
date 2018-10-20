@@ -1,22 +1,15 @@
 import {connect}				from "react-redux"
 import Nav 						from "@components/Nav";
-import mainNavigation, {
-	createNavigation
-} 								from "@models/appNavigation"
-import {
-	StoreActions as boilerplatesStoreActions,
-} 								from "@models/boilerplates";
+import createNavigation 		from "@utils/createNavigation";
+import getItems 				from "@models/appNavigation/getItems";
 
 const ConnectedNav = connect(function mapStateToProps(state){
-	let nav = mainNavigation.getItems().concat([]);
-
-	let boilderplates = boilerplatesStoreActions.getList(state);
+	let nav = getItems();
 
 	nav = createNavigation(nav);
-	nav.push(boilderplates);
 
 	return {
-		nav: mainNavigation.getNavigation(),
+		nav: nav,
 	}
 })(Nav)
 

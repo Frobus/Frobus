@@ -4,13 +4,9 @@ import styled 					from "styled-components";
 
 import {Menu as AntMenu, Icon} 	from 'antd';
 
-import appNavigation 			from "@models/appNavigation";
+import getItemUrl	 			from "@models/appNavigation/getItemUrl";
 import GetRouter 				from "@components/Router/GetRouter";
 import config 					from "@system/config";
-import {
-	IList as boilerplatesList
-}								from "@models/boilerplates";
-import createNavigation 		from "@utils/createNavigation";
 
 interface INavItem {
 	caption		 : string;
@@ -26,7 +22,7 @@ interface INavProps {
 
 export default class Nav extends React.PureComponent<INavProps> {
 	onSelectHandler(router, event){
-		const url = appNavigation.getItemUrl(event.key);
+		const url = getItemUrl(event.key);
 		router.go(url);
 	}
 	getSelectedFromLocation(location: ILocation){

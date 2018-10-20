@@ -94,7 +94,7 @@ export default function renderField(fieldInstance: Field, form: WrappedFormUtils
 			const onClick = () => {
 				const path = dialog.showOpenDialog({properties: [field.type == 'file' ? 'openFile' : 'openDirectory']});
 				form.setFieldsValue({
-					[field.name]: path,
+					[field.name]: path
 				})
 			}
 			input = (

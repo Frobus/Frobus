@@ -13,9 +13,7 @@ import path 							from "@utils/path";
 import text 							from "@system/text";
 import errorHandler						from "@system/errorHandler";
 import showMessage						from "@system/showMessage";
-import {
-	StoreActions as boilerplatesActions
-}										from "@models/boilerplates";
+import addBoilerplate 					from "@models/boilerplates/addBoilerplate";
 
 const {Item: FormItem} 			= Form;
 const {Group: InputGroup}		= Input;
@@ -24,11 +22,12 @@ class BoilerplatesNew extends React.PureComponent<IPageSettingsProps> {
 	onError(e){}
 
 	async onSubmit(event){
+		console.log('onSubmit')
 		event.preventDefault();
 		let values:any = await this.validate();
 		if(!values) return;
 		try {
-			boilerplatesActions.addBoilerplate({
+			addBoilerplate({
 				name: values.boilerplateName,
 				path: Array.isArray(values.boilerplatePath) ? values.boilerplatePath[0] : values.boilerplatePath,
 			})
@@ -39,6 +38,15 @@ class BoilerplatesNew extends React.PureComponent<IPageSettingsProps> {
 	}
 	async onChange(){
 		await this.validate();
+		let boilerplatePath = this.props.form.getFieldValue("boilerplatePath");
+		let boilerplateName = this.props.form.getFieldValue("boilerplateName");
+		console.log(boilerplatePath)
+		if(!boilerplateName && boilerplatePath){
+			boilerplateName = boilerplatePath.replace(/\\/g, '/').split('/').pop();
+			this.props.form.setFieldsValue({
+				'boilerplateName': boilerplateName
+			})
+		}
 	}
 	async validate(){
 		return new Promise((resolve, eject) => {
