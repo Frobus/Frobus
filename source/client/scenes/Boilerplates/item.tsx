@@ -11,7 +11,7 @@ export default class Boilerplate extends React.PureComponent<{
 			<div>
 				Boilerplate:
 				<pre>
-					{JSON.stringify(getItem(this.props.id), null, "\t")}
+					{/* {JSON.stringify(getItem(this.props.id), null, "\t")} */}
 				</pre>
 			</div>
 		);
